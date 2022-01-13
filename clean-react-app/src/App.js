@@ -1,11 +1,20 @@
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
+import Users from "./components/users/Users";
+import Posts from "./components/posts/Posts";
+import Comments from "./components/comments/Comments";
 
-    </div>
-  );
+
+function App() {
+    return (
+        <div className="App">
+            <div className='wrapper'>
+                <Users/>
+                <Posts/>
+            </div>
+            <Comments/>
+        </div>
+    );
 }
 
 export default App;

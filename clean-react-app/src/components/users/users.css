@@ -1,0 +1,10 @@
+.users{
+    width: 48%;
+    border: 1px solid black;
+    margin: 15px;
+
+}
+li{
+    list-style: none;
+
+}
