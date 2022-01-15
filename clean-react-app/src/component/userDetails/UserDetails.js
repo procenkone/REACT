@@ -1,7 +1,16 @@
 import React from 'react';
 //
-const UserDetails = ({user}) => {
-    let {id,name,surname,email,phone,website,address:{street,suite,city,zipcode,geo:{lat,lng}},company:{catchPhrase,bs}} = user
+const UserDetails = ({user, getPosts}) => {
+    let {
+        id,
+        name,
+        surname,
+        email,
+        phone,
+        website,
+        address: {street, suite, city, zipcode, geo: {lat, lng}},
+        company: {catchPhrase, bs}
+    } = user
     return (
         <div>
             <h2>id - {id}<br/>
@@ -19,6 +28,7 @@ const UserDetails = ({user}) => {
                 catchPhrase - {catchPhrase}<br/>
                 company name - {user.company.name}<br/>
                 bs - {bs}</h2>
+            <button onClick={() => getPosts(id)}>getPosts</button>
         </div>
     );
 };
