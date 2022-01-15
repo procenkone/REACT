@@ -23,7 +23,7 @@ const Users = () => {
             .then(response => response.json())
             .then(posts => {
                 setPosts(posts)
-            } )
+            })
     }
 
     return (
@@ -32,7 +32,7 @@ const Users = () => {
                 <div>{users.map(item => <User key={item.id} users={item} getUserId={getUserId}/>)}</div>
                 <div>{user && <UserDetails user={user} getPosts={getPosts}/>}</div>
             </div>
-            {posts && posts.map(itemPost=><Posts key={itemPost.id} posts={itemPost}/>)}
+            {posts && <Posts posts={posts}/>}
 
         </div>
     );
