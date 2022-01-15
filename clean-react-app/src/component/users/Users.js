@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import User from "../user/User";
 import UserDetails from "../userDetails/UserDetails";
+import '../../App.css'
 
 const Users = () => {
     const [users, setUsers] = useState([])
@@ -16,9 +17,9 @@ const Users = () => {
             .then(user=>setUser(user))
     }
     return (
-        <div>
-            {users.map(item=><User key={item.id} users={item}/>)}
-            {user && <UserDetails getUserId={getUserId} user={user}/>}
+        <div className={"usersWrap"}>
+            {users.map(item=><User key={item.id} users={item} getUserId={getUserId}/>)}
+            {user && <UserDetails  user={user}/>}
         </div>
     );
 };
