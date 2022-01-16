@@ -1,5 +1,5 @@
 import React from 'react';
-//
+
 const UserDetails = ({user, getPosts}) => {
     let {
         id,
@@ -11,6 +11,7 @@ const UserDetails = ({user, getPosts}) => {
         address: {street, suite, city, zipcode, geo: {lat, lng}},
         company: {catchPhrase, bs}
     } = user
+
     return (
         <div>
             <h2>id - {id}<br/>

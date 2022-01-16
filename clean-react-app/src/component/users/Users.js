@@ -1,26 +1,31 @@
 import React, {useEffect, useState} from 'react';
+
+import '../../App.css'
 import User from "../user/User";
 import UserDetails from "../userDetails/UserDetails";
-import '../../App.css'
 import Posts from "../posts/Posts";
+import {getUsers} from "../../services/user.services";
+import {getPost} from "../../services/posts.services";
 
 const Users = () => {
+
     const [users, setUsers] = useState([])
     const [user, setUser] = useState(null)
     const [posts, setPosts] = useState(null)
+
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then(response => response.json())
+        getUsers.getAll()
             .then(users => setUsers(users))
     }, [])
+
     const getUserId = (id) => {
-        fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-            .then(response => response.json())
+        getUsers.getIdUser(id)
             .then(user => setUser(user))
+        setPosts([])
     }
+
     const getPosts = (id) => {
-        fetch(`https://jsonplaceholder.typicode.com/users/${id}/posts`)
-            .then(response => response.json())
+        getPost.get(id)
             .then(posts => {
                 setPosts(posts)
             })
@@ -33,7 +38,6 @@ const Users = () => {
                 <div>{user && <UserDetails user={user} getPosts={getPosts}/>}</div>
             </div>
             {posts && <Posts posts={posts}/>}
-
         </div>
     );
 };
