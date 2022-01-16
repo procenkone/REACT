@@ -1,29 +1,31 @@
 import React, {useEffect, useState} from 'react';
+
 import Users from "./Users";
+import {getUser} from "../services/user.services";
 
 const Form = () => {
+    //state
     const [form, setForm] = useState({name: '', username: '', email: ''})
     const [users, setUsers] = useState([])
-    const [filter,setFilter] = useState(null)
+    const [filter, setFilter] = useState(null)
 
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then(response => response.json())
+        getUser.all()
             .then(users => setUsers(users))
     }, [])
 
     const formHandler = (event) => {
         event.preventDefault()
-        let eventData = {...form, [event.target.name]: event.target.value}
-        setForm({...eventData})
+        setForm({...form, [event.target.name]: event.target.value})
     }
+
     const find = (event) => {
         event.preventDefault()
         setFilter(users.filter(item => item.name.toLowerCase().includes(form.name)
-            && item.email.toLowerCase().includes(form.email)
+            && item.username.toLowerCase().includes(form.username)
             && item.email.toLowerCase().includes(form.email)))
     }
-    console.log(filter)
+
     return (
         <div>
             <form onSubmit={find}>
@@ -39,7 +41,7 @@ const Form = () => {
                 </div>
                 <button>find</button>
             </form>
-            <Users users={users} filter={filter} />
+            <Users users={users} filter={filter}/>
 
         </div>
     );
