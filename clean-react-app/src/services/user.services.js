@@ -1,10 +1,12 @@
+import {urls} from "../configs/urls";
+
 const getAll = () => {
-    return fetch('https://jsonplaceholder.typicode.com/users')
+    return fetch(`${urls.users}`)
         .then(response => response.json())
 }
 
 const getIdUser = (id) => {
-    return fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+    return fetch(`${urls.users}/${id}`)
         .then(response => response.json())
 }
 
