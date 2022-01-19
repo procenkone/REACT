@@ -4,9 +4,9 @@ import Cars from "./component/cars/Cars";
 import {useState} from "react";
 
 function App() {
-    const [trigger,setTrigger] = useState(null)
+    const [trigger, setTrigger] = useState(null)
 
-    const update = data =>{
+    const update = data => {
         setTrigger(data)
     }
 

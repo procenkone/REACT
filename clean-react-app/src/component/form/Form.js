@@ -18,9 +18,9 @@ const Form = ({update}) => {
 
     const onSubmit = (car) => {
         console.log('onsubmit')
-        if(car.updateById){
+        if (car.updateById) {
             console.log('update')
-            carService.update(car.updateById,car)
+            carService.update(car.updateById, car)
                 .then(value => update(value))
             return
         }
@@ -31,7 +31,6 @@ const Form = ({update}) => {
             .catch(errors => setFormError(errors.response.data)//відловили помилки і записали в стейт
             )
     }//функція обробки форми
-
 
 
     // watch(value =>console.log(value))//відслідковує подію в реальному часі
