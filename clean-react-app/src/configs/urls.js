@@ -1,7 +1,7 @@
-const baseUrls = 'http://91.201.233.14/api/v2'
+const baseURL = 'http://91.201.233.14/api/v2'
 
-export default baseUrls
+export default baseURL
 
-export const cars = {
+export const urls = {
     cars: '/cars'
 }
