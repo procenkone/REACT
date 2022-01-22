@@ -1,14 +1,6 @@
-.header{
-    min-height: 100px;
-    background: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.header a{
-    font-size: 30px;
-    color: snow;
-    text-decoration: none;
-}
