@@ -1,0 +1,12 @@
+.userWrap h3{
+    font-size: 20px;
+    margin: 15px;
+
+}
+.userWrap a{
+    text-decoration: none;
+    color: black;
+}
+.userWrap a[class='active']{
+    color: red;
+}

@@ -1,0 +1,4 @@
+.postsWrap{
+    display: flex;
+    gap: 40px;
+}
