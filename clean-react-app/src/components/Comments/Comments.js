@@ -10,11 +10,10 @@ const Comments = () => {
     useEffect(() => {
         commentsServices.getById(state).then(value => setComments([...value]))
     }, [state])
-    console.log(comments)
     return (
         <div className={css.commentsWrap}>
             {comments && comments.map(comment =>
-                <div>
+                <div key={comment.id}>
                     <div>PostId:{comment.postId}</div>
                     <div>Id:{comment.id}</div>
                     <div>Name:{comment.name}</div>
