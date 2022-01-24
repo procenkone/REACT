@@ -3,7 +3,7 @@ import {Outlet} from 'react-router-dom'
 
 import css from './postsPages.module.css'
 import {postsServices} from "../../services/posts.services";
-import Post from "../../components/Post/Post";
+import {Post} from "../../components";
 
 const PostsPages = () => {
     const [posts, setPosts] = useState([])
@@ -24,4 +24,4 @@ const PostsPages = () => {
     );
 };
 
-export default PostsPages;
+export {PostsPages};

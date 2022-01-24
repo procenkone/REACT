@@ -22,4 +22,4 @@ const Photos = () => {
     );
 };
 
-export default Photos;
+export {Photos};

@@ -1,21 +1,21 @@
 import React, {useEffect, useState} from 'react';
-import {NavLink, useLocation, Outlet} from "react-router-dom";
+import {NavLink,  Outlet, useParams} from "react-router-dom";
 
 import {albumsServices} from "../../services/albums.services";
 
 const Albums = () => {
-    const {state} = useLocation()
+    const {id} = useParams()
 
-    const [albums, setAlbums] = useState(null)
+    const [albums, setAlbums] = useState([])
 
     useEffect(()=>{
-        albumsServices.getById(state).then(value => setAlbums([...value]))
-    },[state])
+        albumsServices.getById(id).then(value => setAlbums([...value]))
+    },[id])
 
     return (
         <div>
             {
-                albums && albums.map(album=>
+                albums.map(album=>
                 <div key={album.id}>
                     <h3>Album id: {album.id}</h3>
                     <div>Title: {album.title}</div>
@@ -30,4 +30,4 @@ const Albums = () => {
     );
 };
 
-export default Albums;
+export {Albums};

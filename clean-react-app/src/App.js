@@ -1,15 +1,8 @@
 import {Routes, Route} from 'react-router-dom'
 
 import './App.css';
-import Layout from "./components/Layout/Layout";
-import UsersPages from "./pages/UsersPages/UsersPages";
-import PostsPages from "./pages/PostsPages/PostsPages";
-import UserDetails from "./components/UserDetails/UserDetails";
-import Posts from "./components/Posts/Posts";
-import PostsDetails from "./components/PostsDetails/PostsDetails";
-import Comments from "./components/Comments/Comments";
-import Albums from "./components/Albums/Albums";
-import Photos from "./components/Photos/Photos";
+import {Layout,UserDetails,Posts,PostsDetails,Comments,Albums,Photos} from './components/index'
+import {UsersPages,PostsPages} from './pages/index'
 
 function App() {
 

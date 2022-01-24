@@ -26,4 +26,4 @@ const PostsDetails = () => {
     );
 };
 
-export default PostsDetails;
+export {PostsDetails};

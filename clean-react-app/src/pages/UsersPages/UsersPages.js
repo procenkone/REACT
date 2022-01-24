@@ -3,7 +3,8 @@ import {Outlet} from 'react-router-dom'
 
 import css from './userPages.module.css'
 import {userServices} from "../../services/user.services";
-import User from "../../components/User/User";
+import {User} from "../../components";
+
 
 const UsersPages = () => {
     const [users, setUsers] = useState([])
@@ -25,4 +26,4 @@ const UsersPages = () => {
     );
 };
 
-export default UsersPages;
+export {UsersPages};
