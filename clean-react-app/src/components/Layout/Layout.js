@@ -2,6 +2,7 @@ import React from 'react';
 import {NavLink, Outlet} from "react-router-dom";
 
 import css from './layout.module.css'
+import Temp from "../Temp";
 
 const Layout = () => {
     return (
@@ -10,7 +11,7 @@ const Layout = () => {
                 <NavLink to="/users">Users</NavLink>
                 <NavLink to="/posts">Posts</NavLink>
             </div>
-
+            <Temp/>
             <div className={css.outlet}>
                 <Outlet/>
             </div>
