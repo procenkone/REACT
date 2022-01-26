@@ -1,0 +1,34 @@
+.titleEpisodes{
+    height: 80px;
+    background:#fcf8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.episodePageWrap{
+    margin:  auto;
+}
+.episodesBlock{
+    display: flex;
+    width: 80%;
+    flex-wrap:wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px auto;
+}
+.itemEpisode{
+    background: #fcf8f8;
+    width: 290px;
+    padding: 15px;
+    height: 150px;
+    line-height: 20px;
+}
+.itemEpisode h3{
+    margin-bottom: 20px;
+}
+.itemEpisodeLink{
+    padding-top: 10px;
+}
+.itemEpisodeLink a{
+    text-decoration: none;
+}

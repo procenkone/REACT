@@ -7,8 +7,7 @@ const Layout = () => {
     return (
         <>
             <div className={css.header}>
-                <NavLink to="/users">Users</NavLink>
-                <NavLink to="/posts">Posts</NavLink>
+                <NavLink to="/episodes">Rick and Morty</NavLink>
             </div>
 
             <div className={css.outlet}>
@@ -16,7 +15,7 @@ const Layout = () => {
             </div>
 
             <div className={css.footer}>
-                <h4>ClassWork</h4>
+                <h4>Additional Work</h4>
             </div>
         </>
     );
