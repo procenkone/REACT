@@ -32,3 +32,8 @@
 .itemEpisodeLink a{
     text-decoration: none;
 }
+.button{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}

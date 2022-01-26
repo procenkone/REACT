@@ -21,7 +21,7 @@ const EpisodeDetails = () => {
     }, [id])
 
     return (
-        <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+        <div className={css.episodeDetails}>
             <div className={css.charactersTitle}>
                 <h2 style={{marginBottom: "10px"}}>{name}</h2>
                 <h4>Episode: {episode}</h4>

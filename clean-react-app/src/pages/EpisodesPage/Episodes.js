@@ -10,13 +10,19 @@ const Episodes = () => {
     const [page, setPage] = useState(1)
 
 
-    const next = () => {
-        page < 3 && setPage(page + 1)
+
+    const move = (type) => {
+        type === 'previous' && page !== 1 && setPage(page - 1)
+        type === 'next' && page < 3 && setPage(page + 1)
     }
 
-    const previous = () => {
-        page !== 1 && setPage(page - 1)
-    }
+    // const next = () => {
+    //     page < 3 && setPage(page + 1)
+    // }
+    //
+    // const previous = () => {
+    //     page !== 1 && setPage(page - 1)
+    // }
 
     useEffect(() => {
         switch (page) {
@@ -64,9 +70,9 @@ const Episodes = () => {
 
 
             </div>
-            <div style={{display: "flex", justifyContent: "center", gap: "20px"}}>
-                <button onClick={previous}>previous</button>
-                <button onClick={next}>next</button>
+            <div className={css.button}>
+                <button onClick={()=>move('previous')}>previous</button>
+                <button onClick={()=>move('next')}>next</button>
             </div>
         </div>
     );
