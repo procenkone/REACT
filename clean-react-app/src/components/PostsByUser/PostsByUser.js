@@ -1,11 +1,11 @@
 import React from 'react';
 
-const HomePage = () => {
+const PostsByUser = () => {
     return (
         <div>
-            
+            PostsByUser
         </div>
     );
 };
 
-export default HomePage;
+export default PostsByUser;

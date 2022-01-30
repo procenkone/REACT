@@ -1,24 +1,19 @@
 import React from 'react';
-import {NavLink, Outlet} from "react-router-dom";
+import {Outlet} from 'react-router-dom'
 
-import css from './layout.module.css'
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 const Layout = () => {
     return (
-        <>
-            <div className={css.header}>
-                <NavLink to="/users">Users</NavLink>
-                <NavLink to="/posts">Posts</NavLink>
-            </div>
-
-            <div className={css.outlet}>
+        <div className={'layout'}>
+            layout
+            <Header/>
+            <div className={'outlet'}>
                 <Outlet/>
             </div>
-
-            <div className={css.footer}>
-                <h4>ClassWork</h4>
-            </div>
-        </>
+            <Footer/>
+        </div>
     );
 };
 
