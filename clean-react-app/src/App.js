@@ -1,25 +1,18 @@
-import {Routes, Route} from 'react-router-dom'
 import './App.css';
-import Layout from "./components/Layout/Layout";
-import Cars from "./components/Cars/Cars";
-import Users from "./components/Users/Users";
-import UserDetails from "./components/UserDetails/UserDetails";
-import PostsByUser from "./components/PostsByUser/PostsByUser";
+import Cars from "./components/Cars";
+import Form from "./components/Form";
+import {useState} from "react";
 
 function App() {
-
+    const [trigger, setTrigger] = useState(false)
+    const [id, setId] = useState(null)
+    const updateCar = (id) => {
+        setId(id)
+    }
     return (
         <div className="App">
-            <Routes>
-                <Route path={'/'} element={<Layout/>}>
-                    <Route path={'cars'} element={<Cars/>}/>
-                    <Route path={'users'} element={<Users/>}>
-                        <Route path={':id'} element={<UserDetails/>}>
-                            <Route path={'posts'} element={<PostsByUser/>}/>
-                        </Route>
-                    </Route>
-                </Route>
-            </Routes>
+            <Form setTrigger={setTrigger} id={id} trigger={trigger}/>
+            <Cars setTrigger={setTrigger} updateCar={updateCar} trigger={trigger}/>
         </div>
     );
 }
