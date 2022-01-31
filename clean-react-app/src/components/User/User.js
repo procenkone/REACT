@@ -10,7 +10,7 @@ const User = ({user}) => {
             {/*<div><b>email:</b> {user.email}</div>*/}
             {/*<div><b>phone:</b> {user.phone}</div>website*/}
             {/*<div><b>website:</b> {user.website}</div>*/}
-            <NavLink to={`${user.id.toString()}`} state={user}><button>get details user</button></NavLink>
+            <NavLink to={user.id.toString()} state={user}><button>get details user</button></NavLink>
             <br/>
         </div>
     );

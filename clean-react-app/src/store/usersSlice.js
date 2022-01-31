@@ -20,24 +20,24 @@ const usersSlice = createSlice({
     name: "usersSlice",
     initialState: {
         users: [],
-        status:null,
-        error:null
+        status: null,
+        error: null
     },
+
+
     reducers: {
-        addUsers: (state, action) => {
-            // state.users.push()
-        }
+
     },
     extraReducers: {
-        [getAllUsers.pending]: (state,action) => {
-        state.status = 'pending'
-        state.error = null
+        [getAllUsers.pending]: (state, action) => {
+            state.status = 'pending'
+            state.error = null
         },
-        [getAllUsers.fulfilled]:(state,action)=>{
+        [getAllUsers.fulfilled]: (state, action) => {
             state.status = 'fulfilled'
             state.users = action.payload
         },
-        [getAllUsers.rejected]:(state,action)=>{
+        [getAllUsers.rejected]: (state, action) => {
             state.status = 'rejected'
             state.error = action.payload
         }

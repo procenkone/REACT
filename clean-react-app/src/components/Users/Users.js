@@ -13,7 +13,6 @@ const Users = () => {
     useEffect(() => {
         dispatch(getAllUsers())
     }, [])
-    console.log(users)
 
     return (
         <div style={{display: 'flex'}}>
