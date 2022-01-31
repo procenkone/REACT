@@ -17,6 +17,7 @@ const Users = () => {
     return (
         <div style={{display: 'flex'}}>
             <div className={'users_block'}>
+                <h2>Users: </h2>
                 {status === 'pending' && <h1>Loading</h1>}
                 {error && <h1>{error}</h1>}
                 {

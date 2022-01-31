@@ -4,11 +4,12 @@ import {Outlet} from "react-router-dom";
 
 const UserDetails = () => {
     const {state} = useLocation()
-    console.log()
+
     return (
-        <>
+        <div style={{display:'flex'}}>
             {state && <div>
-                UserDetails
+                <h2>UserDetails</h2>
+
                 <div><b>Name:</b> {state.name}</div>
                 <div><b>username:</b> {state.username}</div>
                 <div><b>email:</b> {state.email}</div>
@@ -21,7 +22,7 @@ const UserDetails = () => {
             <div className={'userDetailsOutlet'}>
                 <Outlet/>
             </div>
-        </>
+        </div>
     );
 };
 

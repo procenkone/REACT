@@ -14,7 +14,6 @@ const Cars = () => {
     useEffect(() => {
         dispatch(getAllCars())
     }, [])
-    console.log(cars)
 
     return (
         <div className={'cars'}>

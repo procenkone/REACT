@@ -23,13 +23,16 @@ const postsSlice = createSlice({
         status: null,
         error: null
     },
+
     reducers: {
         getPost: (state, action) => {
             state.post = state.posts.filter(post=>post.userId == action.payload)
+
             //не логається стейт ????????????????
             //я хочу відфільтрувати в масиа пост тільки ті пости у кого є айді яку приходить з ростбайюзер компоненти
         }
     },
+
     extraReducers: {
         [getAllPosts.pending]: (state, action) => {
             state.status = 'pending'

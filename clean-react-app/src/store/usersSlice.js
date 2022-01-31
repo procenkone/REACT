@@ -6,7 +6,7 @@ export const getAllUsers = createAsyncThunk(
     'usersSlice/getAll',
     async (_, {rejectWithValue}) => {
         try {
-            const allUsers = usersService.getAll()
+            const allUsers = await usersService.getAll()
             return allUsers
         } catch (e) {
             return rejectWithValue(e.message)

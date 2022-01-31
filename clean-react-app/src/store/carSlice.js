@@ -49,7 +49,6 @@ const carSlice = createSlice({// 2 - створили слайс для поча
             state.cars.push(action.payload.data)
         },
         delCar: (state, action) => {
-            console.log(action.payload)
             state.cars = state.cars.filter(car => car.id !== action.payload)
 
         }
