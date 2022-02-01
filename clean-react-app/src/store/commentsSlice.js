@@ -9,7 +9,7 @@ export const getAllComments = createAsyncThunk(
             const comments = await commentsService.getById(idPosts)
             return comments
         } catch (e) {
-            return rejectWithValue(e.message)
+             return rejectWithValue(e.message)
         }
     }
 )
