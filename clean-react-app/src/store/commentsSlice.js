@@ -4,9 +4,9 @@ import {commentsService} from "../services/placeholderService/comments.service";
 
 export const getAllComments = createAsyncThunk(
     'commentsSlice/getAllComments',
-    async (_, {rejectWithValue}) => {
+    async ({idPosts}, {rejectWithValue}) => {
         try {
-            const comments = await commentsService.getAll()
+            const comments = await commentsService.getById(idPosts)
             return comments
         } catch (e) {
             return rejectWithValue(e.message)
@@ -18,17 +18,12 @@ const commentsSlice = createSlice({
     name: 'commentsSlice',
     initialState: {
         comments: [],
-        commentsByPosts: [],
         status: null,
         error: null
     },
-    reducers: {
-        getCommentsById: (state, action) => {
-            state.commentsByPosts = state.comments.filter(comment => comment.postId == action.payload)
-        }
-    },
+    reducers: {},
     extraReducers: {
-        [getAllComments.pending]: (state, action) => {
+        [getAllComments.pending]: (state) => {
             state.status = 'pending'
             state.error = null
         },
@@ -44,7 +39,7 @@ const commentsSlice = createSlice({
 })
 
 const commentsReducer = commentsSlice.reducer
-export const {getCommentsById} = commentsSlice.actions
+export const {} = commentsSlice.actions
 
 
 export default commentsReducer

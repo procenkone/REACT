@@ -3,20 +3,17 @@ import {NavLink, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {Outlet} from "react-router-dom";
 
-import {getAllPosts, getPost} from "../../store/postsSlice";
+import {getAllPosts} from "../../store/postsSlice";
 import css from './postsByUser.module.css'
 
 const PostsByUser = () => {
-    const {post} = useSelector(state => state['postsReducer'])
+    const {posts} = useSelector(state => state['postsReducer'])
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(getAllPosts())
-    }, [])
     const {id} = useParams()
 
-     useEffect(() => {
-        dispatch(getPost(id))
+    useEffect(() => {
+        dispatch(getAllPosts({id}))
     }, [id])
 
 
@@ -24,7 +21,7 @@ const PostsByUser = () => {
         <div className={css.postsWrap}>
             <div>
                 {
-                    post && post.map(post =>
+                    posts && posts.map(post =>
                         <div className={css.postsItem} key={post.id}>
                             <div><b>Post № {post.id}</b></div>
                             <div><b>Title: </b>{post.title}</div>

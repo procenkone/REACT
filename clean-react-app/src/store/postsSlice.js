@@ -4,9 +4,9 @@ import {postsService} from "../services/placeholderService/posts.service";
 
 export const getAllPosts = createAsyncThunk(
     'postsSlice/getAllPosts',
-    async (_, {rejectWithValue}) => {
+    async ({id}, {rejectWithValue}) => {
         try {
-            const posts = await postsService.getAll()
+            const posts = await postsService.getById(id)
             return posts
         } catch (e) {
             return rejectWithValue(e.message)
@@ -19,27 +19,22 @@ const postsSlice = createSlice({
     name: "postsSlice",
     initialState: {
         posts: [],
-        post:[],
         status: null,
         error: null
     },
 
-    reducers: {
-        getPost: (state, action) => {
-            state.post = state.posts.filter(post=>post.userId == action.payload)
-        }
-    },
+    reducers: {},
 
     extraReducers: {
         [getAllPosts.pending]: (state) => {
             state.status = 'pending'
             state.error = null
         },
-        [getAllPosts.fulfilled]:(state, action)=>{
+        [getAllPosts.fulfilled]: (state, action) => {
             state.status = 'fulfilled'
             state.posts = action.payload
         },
-        [getAllPosts.rejected]:(state, action)=>{
+        [getAllPosts.rejected]: (state, action) => {
             state.status = 'rejected'
             state.error = action.payload
         }
@@ -47,6 +42,6 @@ const postsSlice = createSlice({
 })
 
 const postsReducer = postsSlice.reducer
-export const {getPost} = postsSlice.actions
+export const {} = postsSlice.actions
 
 export default postsReducer
