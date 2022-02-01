@@ -1,0 +1,11 @@
+.user{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border-radius: 10px;
+    width: 170px;
+    box-shadow: 19px 20px 38px rgb(0 0 0 / 54%);
+    text-align: center;
+    padding-top: 10px;
+    margin-top: 15px;
+}

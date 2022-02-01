@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {getAllComments, getCommentsById} from '../../store/commentsSlice'
 import {useParams} from "react-router-dom";
-
+import css from './comments.module.css'
 const Comments = () => {
     let dispatch = useDispatch();
 
@@ -23,13 +23,12 @@ const Comments = () => {
 
 
     return (
-        <div>
-           <h2> Comments:</h2>
+        <div className={css.commentsWrap}>
+
             {
                 commentsByPosts && commentsByPosts.map(comment =>
-                    <div key={comment.id}>
-                        <hr/>
-                        <br/>
+                    <div className={css.commentsItem} key={comment.id}>
+
                         <div><b>Comment №{comment.id}</b></div>
                         <div><b>Name</b>: {comment.name}</div>
                         <div><b>Body</b>: {comment.body}</div>

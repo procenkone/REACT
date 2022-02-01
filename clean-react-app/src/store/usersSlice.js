@@ -20,13 +20,16 @@ const usersSlice = createSlice({
     name: "usersSlice",
     initialState: {
         users: [],
+        user: [],
         status: null,
         error: null
     },
 
 
     reducers: {
-
+        getUser: (state, action) => {
+            state.user = state.users.filter(user=>user.id == action.payload)
+        }
     },
     extraReducers: {
         [getAllUsers.pending]: (state, action) => {
@@ -46,6 +49,6 @@ const usersSlice = createSlice({
 })
 
 const usersReducer = usersSlice.reducer
-export const {} = usersSlice.actions
+export const {getUser} = usersSlice.actions
 
 export default usersReducer

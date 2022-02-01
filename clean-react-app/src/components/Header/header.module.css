@@ -1,0 +1,16 @@
+.header{
+    background: cornflowerblue;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+    height: 50px;
+}
+.header a{
+    text-decoration: none;
+    font-size: 30px;
+    color: snow;
+}
+.header a[class='active']{
+    color: black;
+}

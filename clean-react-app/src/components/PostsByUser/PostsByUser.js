@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Outlet} from "react-router-dom";
 
 import {getAllPosts, getPost} from "../../store/postsSlice";
-
+import css from './postsByUser.module.css'
 
 const PostsByUser = () => {
 
@@ -23,15 +23,14 @@ const PostsByUser = () => {
 
 
     return (
-        <div style={{display:'flex', width:'45%'}}>
+        <div className={css.postsWrap} >
 
             <div>
-                <h2>PostsByUser: {id}</h2>
+
                 {
                     post && post.map(post =>
-                        <div key={post.id}>
-                            <hr/>
-                            <br/>
+                        <div className={css.postsItem} key={post.id}>
+
                             <div><b>Post № {post.id}</b></div>
                             <div><b>Title: </b>{post.title}</div>
                             <div><b>Body: </b>{post.body}</div>

@@ -4,7 +4,7 @@ import {Outlet} from "react-router-dom";
 
 import {getAllUsers} from "../../store/usersSlice";
 import User from "../User/User";
-
+import css from './users.module.css'
 
 const Users = () => {
     const dispatch = useDispatch()
@@ -15,7 +15,7 @@ const Users = () => {
     }, [])
 
     return (
-        <div style={{display: 'flex'}}>
+        <div className={css.users}>
             <div className={'users_block'}>
                 <h2>Users: </h2>
                 {status === 'pending' && <h1>Loading</h1>}
@@ -24,7 +24,7 @@ const Users = () => {
                     users.map(user => <User key={user.id} user={user}/>)
                 }
             </div>
-            <div className={'users_outlet'}>
+            <div className={css.users_outlet}>
                 <Outlet/>
             </div>
 
