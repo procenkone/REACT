@@ -13,19 +13,16 @@ const PostsByUser = () => {
     useEffect(() => {
         dispatch(getAllPosts())
     }, [])
-
     const {id} = useParams()
 
-    useEffect(() => {
+     useEffect(() => {
         dispatch(getPost(id))
     }, [id])
 
 
     return (
         <div className={css.postsWrap}>
-
             <div>
-
                 {
                     post && post.map(post =>
                         <div className={css.postsItem} key={post.id}>
