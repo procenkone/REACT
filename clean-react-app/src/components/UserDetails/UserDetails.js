@@ -2,16 +2,16 @@ import React, {useEffect} from 'react';
 import {NavLink, useLocation, useParams} from "react-router-dom";
 import {Outlet} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
+
 import {getUser} from "../../store/usersSlice";
 import css from './userDetails.module.css'
 
 const UserDetails = () => {
-    const {state} = useLocation()
     let {user} = useSelector(state => state['usersReducer']);
 
     let dispatch = useDispatch();
     let {id} = useParams();
-    console.log(user)
+
     useEffect(() => {
         dispatch(getUser(id))
     }, [id])

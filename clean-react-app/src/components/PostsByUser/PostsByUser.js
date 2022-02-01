@@ -7,8 +7,7 @@ import {getAllPosts, getPost} from "../../store/postsSlice";
 import css from './postsByUser.module.css'
 
 const PostsByUser = () => {
-
-    const {posts, post} = useSelector(state => state['postsReducer'])
+    const {post} = useSelector(state => state['postsReducer'])
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -23,18 +22,17 @@ const PostsByUser = () => {
 
 
     return (
-        <div className={css.postsWrap} >
+        <div className={css.postsWrap}>
 
             <div>
 
                 {
                     post && post.map(post =>
                         <div className={css.postsItem} key={post.id}>
-
                             <div><b>Post № {post.id}</b></div>
                             <div><b>Title: </b>{post.title}</div>
                             <div><b>Body: </b>{post.body}</div>
-                            <NavLink to={`/users/${id}/posts/${post.id}/comments`} >
+                            <NavLink to={`/users/${id}/posts/${post.id}/comments`}>
                                 <button>get comments</button>
                             </NavLink>
                         </div>)

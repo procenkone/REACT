@@ -27,7 +27,6 @@ const Users = () => {
             <div className={css.users_outlet}>
                 <Outlet/>
             </div>
-
         </div>
     );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
 import {useDispatch} from "react-redux";
+
 import {createCar} from "../../store";
 import css from './form.module.css'
 
@@ -20,7 +21,6 @@ const Form = () => {
                 <label>Price: <input type={'text'} {...register('price')}/></label>
                 <button>save</button>
             </form>
-
         </div>
     );
 };
