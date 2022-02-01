@@ -1,7 +1,0 @@
-.cars{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 40px;
-    padding-top: 50px;
-}
