@@ -2,7 +2,10 @@ import React from 'react';
 import {NavLink, useLocation, Outlet} from "react-router-dom";
 
 const UserDetails = () => {
-    const {state:{id,name,email,phone,username}} = useLocation()
+    const {state} = useLocation()
+
+   const {id,name,username, email,phone} = state
+    console.log(name)
 
     return (
         <div className={'usersDetails'}>
@@ -14,7 +17,7 @@ const UserDetails = () => {
                 <div>Phone: {phone} </div>
             </div>
 
-            <NavLink to={`/users/${id}/posts`} ><button>Get posts</button></NavLink>
+            {/*<NavLink to={`/users/4/posts`} ><button>Get posts</button></NavLink>*/}
             <div>
                 <Outlet/>
             </div>

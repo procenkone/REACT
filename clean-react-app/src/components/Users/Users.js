@@ -12,7 +12,7 @@ const Users = () => {
     return (
         <div className={'users'} style={{display:'flex'}} >
             <div>
-            {users.map(user =>
+            { users.map(user =>
                 <div key={user.id}>
                     <NavLink to={`/users/${user.id}`} state={user}>
                         <div>Name: {user.name}</div>
