@@ -6,4 +6,5 @@ export * from './UserInfo/UserInfo';
 export * from './PosterPreview/PosterPreview';
 export * from './StarsRating/StarsRating';
 export * from './GenreBadge/GenreBadge';
-export * from './Footer/Footer'
+export * from './Footer/Footer';
+export * from './TopMovie/TopMovie'

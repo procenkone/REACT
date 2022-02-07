@@ -1,7 +1,19 @@
 import React from 'react';
+import css from './movieList.module.css'
 
-const MoviesList = ({movie:{id,title,backdrop_path,genre_ids,original_title,overview,popularity,poster_path,release_date,}}) => {
-    console.log(id)
+const MoviesList = ({
+                        movie: {
+                            id,
+                            title,
+                            backdrop_path,
+                            genre_ids,
+                            original_title,
+                            overview,
+                            popularity,
+                            poster_path,
+                            release_date,
+                        }
+                    }) => {
     // adult: false
     // backdrop_path: "/iQFcwSGbZXMkeyKrxbPnwnRo5fl.jpg"
     // genre_ids: (3) [28, 12, 878]
@@ -17,9 +29,11 @@ const MoviesList = ({movie:{id,title,backdrop_path,genre_ids,original_title,over
     // vote_average: 8.4
     // vote_count: 7103
     return (
-        <div>
-            <div>{title}</div>
-            <img src={backdrop_path} alt={title}/>
+        <div className={css.movieItem}>
+            <div className={css.titleBlock}>
+                <h3>{title}</h3>
+            </div>
+            <img src={`https://image.tmdb.org/t/p/w200${poster_path}`} alt={title}/>
             <div>{release_date}</div>
         </div>
     );

@@ -1,0 +1,31 @@
+.moviePageWrap{
+ display: flex;
+    width: 70%;
+    padding-top: 400px;
+    margin: 0 auto;
+   justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.carouselWrap{
+    border: 1px solid #0e0e0e;
+    border-radius: 10px 0 10px 10px;
+    width: 974px;
+    margin: 0 auto;
+    padding-top: 215px;
+
+}
+.horizontal{
+    height: 195px;
+    background-color: #585858;
+    border-radius: 10px 0 10px 10px;
+    overflow: hidden;
+    border: 1px solid #848480;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0 auto;
+    display: flex;
+    gap: 18px;
+    padding-left: 20px;
+
+}

@@ -1,0 +1,14 @@
+.movieItem{
+    width: 200px;
+}
+.movieItem h3{
+    list-style-type: none;
+    font-family: Tahoma, verdana, sans-serif;
+    cursor: pointer;
+    color: #e0dfdc;
+    text-decoration: none;
+}
+.titleBlock{
+    height: 35px;
+    margin-bottom: 15px;
+}

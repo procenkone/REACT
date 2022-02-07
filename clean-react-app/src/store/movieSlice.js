@@ -4,13 +4,26 @@ import {movieServices} from "../services";
 
 export const getAllMovie = createAsyncThunk(
     'movieSlice/getAllMovie',
-    async (_, {rejectedWithValue}) => {
+    async (_, {rejectWithValue}) => {
         try {
             const movie = await movieServices.getAll()
             return movie
         } catch (e) {
-            return rejectedWithValue(e)
+            return rejectWithValue(e.message)
         }
+
+    }
+)
+export const getPopular = createAsyncThunk(
+    'movieSlice/getPopular',
+    async (_, {rejectWithValue}) => {
+        try {
+            const popular = await movieServices.getPopular()
+            return popular
+        } catch (e) {
+            return rejectWithValue(e.message)
+        }
+
     }
 )
 
@@ -20,9 +33,14 @@ const movieSlice = createSlice({
     initialState: {
         movies: [],
         status: null,
-        error: null
+        error: null,
+
+        popular:[],
+        statusPopular:null,
+        errorPopular:null
     },
-    reducers: {},
+    reducers: {
+    },
     extraReducers: {
         [getAllMovie.pending]: (state, action) => {
             state.status = 'pending'
@@ -33,10 +51,22 @@ const movieSlice = createSlice({
             state.movies = action.payload
         },
         [getAllMovie.rejected]: (state, action) => {
-            // console.log(action.payload)
             state.status = 'rejected'
             state.error = action.payload
+        },
+        [getPopular.pending]: (state, action) => {
+            state.statusPopular = 'pending'
+            state.errorPopular = null
+        },
+        [getPopular.fulfilled]: (state, action) => {
+            state.statusPopular = 'fulfilled'
+            state.popular = action.payload
+        },
+        [getPopular.rejected]: (state, action) => {
+            state.statusPopular = 'rejected'
+            state.errorPopular = action.payload
         }
+
     }
 })
 
