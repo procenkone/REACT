@@ -1,22 +1,24 @@
 import React, {useEffect} from 'react';
 import {MoviesList, TopMovie} from "../components";
 import {useDispatch, useSelector} from "react-redux";
-import {getAllMovie, getPopular, getPopularity} from "../store";
+import {getAllMovie, getPopular, getPopularity, pagination} from "../store";
 import css from './moviePage.module.css'
+import {isDisabled} from "@testing-library/user-event/dist/utils";
+
 const MoviesPage = () => {
     const dispatch = useDispatch();
 
-    const {movies: {results, page, total_pages},popular, error, status} = useSelector(state => state['movieReducer']);
+    const {movies: {results, page, total_pages}, popular, error, status} = useSelector(state => state['movieReducer']);
 
     useEffect(() => {
         dispatch(getAllMovie())
     }, [])
 
-     useEffect(()=>{
+    useEffect(() => {
         dispatch(getPopular())
-    },[])
+    }, [])
 
-    console.log(popular)
+    console.log(results)
 
 
     return (
@@ -25,7 +27,7 @@ const MoviesPage = () => {
             <div className={css.carouselWrap}>
                 <div className={css.horizontal}>
 
-                    {popular.results && popular.results.map(movieTop=><TopMovie key={movieTop.id} movie={movieTop}/>)}
+                    {popular.results && popular.results.map(movieTop => <TopMovie key={movieTop.id} movie={movieTop}/>)}
                 </div>
             </div>
 
@@ -33,6 +35,11 @@ const MoviesPage = () => {
                 {status === 'pending' && <h1>Loading...</h1>}
                 {error && <h1>{error}</h1>}
                 {results && results.map(movie => <MoviesList key={movie.id} movie={movie}/>)}
+                <div style={{color: 'white'}}>
+                    <button  onClick={() => page > 1 && dispatch(pagination(page - 1))}>previous</button>
+                    {page}
+                    <button onClick={() => page < total_pages && dispatch(pagination(page + 1))}>next</button>
+                </div>
             </div>
 
         </div>

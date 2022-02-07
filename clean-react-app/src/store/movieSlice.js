@@ -26,6 +26,18 @@ export const getPopular = createAsyncThunk(
 
     }
 )
+export const pagination = createAsyncThunk(
+    'movieSlice/pagination',
+    async (page, {dispatch}) => {
+        try {
+            const newPage = await movieServices.paginationMovie(page)
+            console.log(page)
+            dispatch(reloadPage(newPage))
+        } catch (e) {
+            console.log(e.message)
+        }
+    }
+)
 
 
 const movieSlice = createSlice({
@@ -35,11 +47,15 @@ const movieSlice = createSlice({
         status: null,
         error: null,
 
-        popular:[],
-        statusPopular:null,
-        errorPopular:null
+        popular: [],
+        statusPopular: null,
+        errorPopular: null
     },
     reducers: {
+        reloadPage: (state, action) => {
+            console.log(action.payload)
+            state.movies = action.payload
+        }
     },
     extraReducers: {
         [getAllMovie.pending]: (state, action) => {
@@ -71,6 +87,6 @@ const movieSlice = createSlice({
 })
 
 const movieReducer = movieSlice.reducer
-export const {} = movieSlice.actions
+export const {reloadPage} = movieSlice.actions
 
 export {movieReducer}
