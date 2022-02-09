@@ -43,7 +43,6 @@ export const getMovieInfo = createAsyncThunk(
     async (id, {dispatch}) => {
         try {
             const movieDetails = await movieServices.movieInfo(id)
-            console.log(id)
             dispatch(movieInfoDispatch(movieDetails))
         } catch (e) {
             console.log(e.message)
@@ -56,7 +55,6 @@ export const getMovieComments = createAsyncThunk(
     async (id, {dispatch}) => {
         try {
             const movieComments = await movieServices.reviewsById(id)
-            console.log(id)
             dispatch(movieCommentsDispatch(movieComments))
         } catch (e) {
             console.log(e.message)

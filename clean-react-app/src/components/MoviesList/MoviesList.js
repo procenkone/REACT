@@ -16,7 +16,7 @@ const MoviesList = ({
                         }
                     }) => {
     // adult: false
-    // backdrop_path: "/iQFcwSGbZXMkeyKrxbPnwnRo5fl.jpg"
+    // backdrop_path: "https://image.tmdb.org/t/p/w200/iQFcwSGbZXMkeyKrxbPnwnRo5fl.jpg"
     // genre_ids: (3) [28, 12, 878]
     // id: 634649
     // original_language: "en"
@@ -30,9 +30,10 @@ const MoviesList = ({
     // vote_average: 8.4
     // vote_count: 7103
     const year = release_date.toString().slice(0, 4)
+    console.log(backdrop_path)
     return (
-        <div className={css.movieItem}>
-            <NavLink to={`/movie/${id}`}>
+        <div className={css.movieItem} >
+            <NavLink to={`/movie/${id}`} state={backdrop_path}>
                 <div>
                     <div className={css.titleBlock}>
                         <h3>{title} ({year})</h3>

@@ -1,14 +1,20 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
+import {useLocation, useParams} from "react-router-dom";
+
 import {getMovieComments, getMovieInfo} from "../../store";
-import {useParams} from "react-router-dom";
 import css from './movieInfo.module.css'
 
 const MovieInfo = () => {
     const dispatch = useDispatch()
+    const {state: poster} = useLocation()
     const {id} = useParams()
-
     const {movieInfo, comments: {results: comments}} = useSelector(state => state['movieReducer'])
+
+    const posterPath = 'https://image.tmdb.org/t/p/w500'
+    const defUrl = 'https://secure.gravatar.com/avatar/992eef352126a53d7e141bf9e8707576.jpg'
+    const base = 'https://secure.gravatar.com/avatar/'
+
 
     useEffect(() => {
         dispatch(getMovieInfo(id))
@@ -46,14 +52,26 @@ const MovieInfo = () => {
                             <li>Мировая премьера: <span>{movieInfo.release_date}</span></li>
                         </ul>
                     </div>
-                    {comments && comments.map(comment => <div className={css.comments} key={comment.id}>
-                        <div className={css.commentsTitle}>
-                            <img
-                                src={comment.author_details.avatar_path !== null ? comment.author_details.avatar_path.replace(/^./, "") : undefined}
-                                alt={comment.id}/>
-                           <span> {comment.author}</span>
-                        </div>
-                    </div>)}
+                    <div className={css.video}>
+                        <video src="../public/One-D.mp4" controls muted autoPlay={"autoplay"}
+                               poster={posterPath + poster} preload="auto" loop>
+                            video tag is not supported by your browser
+                        </video>
+                    </div>
+
+                    <div className={css.commentsWrap}>
+                        {comments && comments.map(comment =>
+                            <div className={css.comments} key={comment.id}>
+                                <div className={css.commentsTitle}>
+                                    <img
+                                        src={comment.author_details.avatar_path === null ? defUrl : comment.author_details.avatar_path.includes(base) ?
+                                            comment.author_details.avatar_path.replace(/^./, "") : base + comment.author_details.avatar_path}
+                                        alt={comment.id}/>
+                                    <span> {comment.author}</span>
+                                </div>
+                                <div className={css.content}>{comment.content}</div>
+                            </div>)}
+                    </div>
                 </div>
 
             }

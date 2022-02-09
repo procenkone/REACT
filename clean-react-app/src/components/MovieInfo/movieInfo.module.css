@@ -66,16 +66,43 @@ display: flex;
     /*margin-top: 5px;*/
     font-size: 13px;
 }
+
+.video video{
+    margin-left: 312px;
+    width: 485px;
+    height: 273px;
+    border-radius: 30px;
+    margin-top: 30px;
+}
+
 .commentsTitle{
     display: flex;
+    margin-top: 30px;
     align-items: center;
     gap:15px;
+}
+.commentsWrap{
+    margin-left: 270px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+
+
 }
 .comments img{
     border-radius: 50%;
     height: 40px;
 }
 .commentsTitle span{
-    color: #7e7d7d;
     font-size: 20px;
+    font-family: Tahoma, verdana, sans-serif;
+    color: #a8a8a8;
+}
+.content{
+    height: 73px;
+    width: 580px;
+    overflow: hidden;
+    margin-top: 15px;
+    font-family: Tahoma, verdana, sans-serif;
+    color: #a8a89c;
+    font-size: 14px;
 }
