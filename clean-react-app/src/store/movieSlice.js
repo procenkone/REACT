@@ -38,6 +38,31 @@ export const pagination = createAsyncThunk(
         }
     }
 )
+export const getMovieInfo = createAsyncThunk(
+    'movieSlice/pagination',
+    async (id, {dispatch}) => {
+        try {
+            const movieDetails = await movieServices.movieInfo(id)
+            console.log(id)
+            dispatch(movieInfoDispatch(movieDetails))
+        } catch (e) {
+            console.log(e.message)
+        }
+    }
+)
+
+export const getMovieComments = createAsyncThunk(
+    'movieSlice/pagination',
+    async (id, {dispatch}) => {
+        try {
+            const movieComments = await movieServices.reviewsById(id)
+            console.log(id)
+            dispatch(movieCommentsDispatch(movieComments))
+        } catch (e) {
+            console.log(e.message)
+        }
+    }
+)
 
 
 const movieSlice = createSlice({
@@ -46,6 +71,9 @@ const movieSlice = createSlice({
         movies: [],
         status: null,
         error: null,
+        movieInfo: null,
+        comments: [],
+
 
         popular: [],
         statusPopular: null,
@@ -55,6 +83,12 @@ const movieSlice = createSlice({
         reloadPage: (state, action) => {
             console.log(action.payload)
             state.movies = action.payload
+        },
+        movieInfoDispatch: (state, action) => {
+            state.movieInfo = action.payload
+        },
+        movieCommentsDispatch:(state,action)=>{
+            state.comments = action.payload
         }
     },
     extraReducers: {
@@ -87,6 +121,6 @@ const movieSlice = createSlice({
 })
 
 const movieReducer = movieSlice.reducer
-export const {reloadPage} = movieSlice.actions
+export const {reloadPage, movieInfoDispatch, movieCommentsDispatch} = movieSlice.actions
 
 export {movieReducer}

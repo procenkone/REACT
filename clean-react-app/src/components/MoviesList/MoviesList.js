@@ -1,5 +1,6 @@
 import React from 'react';
 import css from './movieList.module.css'
+import {NavLink} from "react-router-dom";
 
 const MoviesList = ({
                         movie: {
@@ -28,13 +29,24 @@ const MoviesList = ({
     // video: false
     // vote_average: 8.4
     // vote_count: 7103
+    const year = release_date.toString().slice(0, 4)
     return (
         <div className={css.movieItem}>
-            <div className={css.titleBlock}>
-                <h3>{title}</h3>
-            </div>
-            <img src={`https://image.tmdb.org/t/p/w200${poster_path}`} alt={title}/>
-            <div>{release_date}</div>
+            <NavLink to={`/movie/${id}`}>
+                <div>
+                    <div className={css.titleBlock}>
+                        <h3>{title} ({year})</h3>
+                    </div>
+                    <img src={`https://image.tmdb.org/t/p/w200${poster_path}`} alt={title}/>
+                </div>
+            </NavLink>
+
+            <div className={css.overview}>
+                    {overview}
+                    <br/>
+                    <br/>
+                    <p>Дата релиза: {release_date} </p>
+                </div>
         </div>
     );
 };

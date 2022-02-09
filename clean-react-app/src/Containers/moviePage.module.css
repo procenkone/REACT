@@ -1,31 +1,41 @@
-.moviePageWrap{
- display: flex;
+.moviePageWrap {
+    display: flex;
     width: 70%;
-    padding-top: 400px;
+    padding-top: 30px;
     margin: 0 auto;
-   justify-content: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
     flex-wrap: wrap;
     gap: 30px;
-}
-.carouselWrap{
-    border: 1px solid #0e0e0e;
-    border-radius: 10px 0 10px 10px;
-    width: 974px;
-    margin: 0 auto;
-    padding-top: 215px;
-
-}
-.horizontal{
-    height: 195px;
-    background-color: #585858;
-    border-radius: 10px 0 10px 10px;
     overflow: hidden;
     border: 1px solid #848480;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin: 0 auto;
-    display: flex;
-    gap: 18px;
-    padding-left: 20px;
+    border-radius: 10px;
+    background: #585858 url(https://kinogo.zone/templates/tmp/images/bg.png) repeat-y;
+}
 
+
+
+.buttonBlock {
+
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    color: #7e7d7d;
+    font-size: 25px;
+
+
+}
+
+.buttonBlock button {
+    text-decoration: none;
+    border: 1px solid #4d4c4c;
+    background: #242424;
+    color: #7e7d7d;
+    padding: 3px 6px;
+    font-size: 12px;
+    width: 60px;
+    cursor: pointer;
 }

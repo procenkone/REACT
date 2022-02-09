@@ -1,13 +1,21 @@
 import React from 'react';
-import {Footer,Header} from "../index";
+import {Outlet} from "react-router-dom";
+import {Footer, Header} from "../index";
 import css from './layout.module.css'
-const Layout = ({children}) => {
+import Carousel from "../Carousel/Carousel";
+
+
+const Layout = () => {
     return (
         <div className={css.wrapLayout}>
             <Header/>
-            <main>
-                {children}
-            </main>
+            <Carousel/>
+            <div>
+                <Outlet/>
+            </div>
+            {/*<main>*/}
+            {/*    {children}*/}
+            {/*</main>*/}
             <Footer/>
         </div>
     );

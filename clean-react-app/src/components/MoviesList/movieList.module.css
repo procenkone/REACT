@@ -1,14 +1,42 @@
-.movieItem{
-    width: 200px;
+.movieItem {
+    display: flex;
+    width: 587px;
+    gap: 25px;
+    margin-top: -15px;
+    margin-left: 256px;
+    height: 438px;
+    border-bottom: 1px solid #6B6B6B;
+    overflow: hidden;
 }
-.movieItem h3{
+
+.movieItem img {
+    height: 300px;
+}
+
+.movieItem a {
+    text-decoration: none;
+
+}
+.movieItem h3:hover{
+    font-size: 16px;
+}
+
+.movieItem h3 {
     list-style-type: none;
     font-family: Tahoma, verdana, sans-serif;
     cursor: pointer;
+    font-size: 15px;
     color: #e0dfdc;
-    text-decoration: none;
 }
-.titleBlock{
-    height: 35px;
+
+.titleBlock {
+    height: 25px;
     margin-bottom: 15px;
+    text-align: center;
+}
+
+.overview {
+    color: #a8a8a8;
+    padding-top: 35px;
+    font-family: Tahoma, verdana, sans-serif;
 }
