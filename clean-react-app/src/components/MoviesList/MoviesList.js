@@ -3,7 +3,7 @@ import css from './movieList.module.css'
 import {NavLink} from "react-router-dom";
 
 const MoviesList = ({
-                        movie: {
+                        m: {
                             id,
                             title,
                             backdrop_path,
@@ -29,8 +29,8 @@ const MoviesList = ({
     // video: false
     // vote_average: 8.4
     // vote_count: 7103
+
     const year = release_date.toString().slice(0, 4)
-    console.log(backdrop_path)
     return (
         <div className={css.movieItem} >
             <NavLink to={`/movie/${id}`} state={backdrop_path}>

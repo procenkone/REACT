@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {movieServices} from "../services";
+import {useEffect} from "react";
 
 
 export const getAllMovie = createAsyncThunk(
@@ -31,7 +32,6 @@ export const pagination = createAsyncThunk(
     async (page, {dispatch}) => {
         try {
             const newPage = await movieServices.paginationMovie(page)
-            console.log(page)
             dispatch(reloadPage(newPage))
         } catch (e) {
             console.log(e.message)
@@ -72,6 +72,10 @@ const movieSlice = createSlice({
         movieInfo: null,
         comments: [],
 
+        currentPage: 1,//поточна сторінка
+        postsPerPage: 5,//скільки постів на сторінці
+        currentPost: [],
+
 
         popular: [],
         statusPopular: null,
@@ -79,14 +83,23 @@ const movieSlice = createSlice({
     },
     reducers: {
         reloadPage: (state, action) => {
-            console.log(action.payload)
             state.movies = action.payload
         },
+
         movieInfoDispatch: (state, action) => {
             state.movieInfo = action.payload
         },
-        movieCommentsDispatch:(state,action)=>{
+        movieCommentsDispatch: (state, action) => {
             state.comments = action.payload
+        },
+
+        paginate: (state, action) => {
+            state.currentPage = action.payload
+            const indexOfLastPost = state.currentPage * state.postsPerPage
+            const indexOfFirstPost = indexOfLastPost - state.postsPerPage
+            state.currentPost = state.movies.results.slice(indexOfFirstPost, indexOfLastPost)
+
+
         }
     },
     extraReducers: {
@@ -119,6 +132,6 @@ const movieSlice = createSlice({
 })
 
 const movieReducer = movieSlice.reducer
-export const {reloadPage, movieInfoDispatch, movieCommentsDispatch} = movieSlice.actions
+export const {reloadPage, movieInfoDispatch, movieCommentsDispatch, paginate} = movieSlice.actions
 
 export {movieReducer}
