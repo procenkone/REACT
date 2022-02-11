@@ -16,6 +16,11 @@
     font-family: Tahoma, verdana, sans-serif;
     padding-bottom: 15px;
 }
+.navLinkBlock{
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
 
 
 
@@ -30,6 +35,9 @@
     list-style-type: none;
     font-family: Tahoma, verdana, sans-serif;
     font-size: 13px;
+}
+.links a:hover{
+    color: red;
 }
 
 .links a[class='active']{

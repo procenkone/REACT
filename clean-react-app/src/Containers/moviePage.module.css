@@ -16,10 +16,25 @@
     background: #585858 url(https://kinogo.zone/templates/tmp/images/bg.png) repeat-y;
 }
 
-
+.navigate{
+    position: absolute;
+    left: 273px;
+    top: 490px;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: normal;
+    color: #f3f3f3;
+    text-shadow: 1px 1px #000;
+    font-family: Tahoma, verdana, sans-serif;
+    border-bottom: 1px solid #848480;
+    width: 330px;
+    padding-bottom: 7px;
+}
+.navigate span{
+    padding-left: 15px;
+}
 
 .buttonBlock {
-
     margin-top: 20px;
     display: flex;
     justify-content: center;

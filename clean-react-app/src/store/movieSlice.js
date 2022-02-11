@@ -113,6 +113,18 @@ export const getGenres = createAsyncThunk(
     }
 )
 
+export const getGenreList = createAsyncThunk(
+    'movieSlice/getGenreList',
+    async (id, {dispatch}) => {
+        try {
+            const movieByGenre = await movieServices.getGenre(id)
+            dispatch(movieGenreDispatch(movieByGenre))
+        } catch (e) {
+            console.log(e.message)
+        }
+    }
+)
+
 
 const movieSlice = createSlice({
     name: 'movieSlice',
@@ -130,6 +142,8 @@ const movieSlice = createSlice({
         statusActor:true,
         genres:[],
         statusGenres:true,
+        genreList:[],
+        statusByGenreList:true,
 
 
         popular: [],
@@ -166,6 +180,12 @@ const movieSlice = createSlice({
             state.statusGenres = true
             state.genres = action.payload
             state.statusGenres = false
+        },
+        movieGenreDispatch:(state,action)=>{
+            state.statusByGenreList = true
+            state.genreList = action.payload
+            state.statusByGenreList = false
+
         }
 
     },
@@ -199,6 +219,6 @@ const movieSlice = createSlice({
 })
 
 const movieReducer = movieSlice.reducer
-export const {reloadPage, movieInfoDispatch, movieCommentsDispatch, movieVideoDispatch, movieUpcomingDispatch, movieActorDispatch, movieGenresDispatch} = movieSlice.actions
+export const {movieGenreDispatch,reloadPage, movieInfoDispatch, movieCommentsDispatch, movieVideoDispatch, movieUpcomingDispatch, movieActorDispatch, movieGenresDispatch} = movieSlice.actions
 
 export {movieReducer}

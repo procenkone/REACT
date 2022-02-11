@@ -10,5 +10,6 @@ export const movieServices = {
     getVideo: (id) => axiosServices(`movie/${id}/videos`).then(value => value.data),
     getUpcoming: () => axiosServices(`/movie/upcoming?language=ru-RU`).then(value => value.data),
     getActor: (id) => axiosServices(`/movie/${id}/credits?language=ru-RU`).then(value => value.data),
-    genreList: () => axiosServices(`/genre/movie/list?language=ru-RU`).then(value => value.data)
+    genreList: () => axiosServices(`/genre/movie/list?language=ru-RU`).then(value => value.data),
+    getGenre:(id)=>axiosServices(`/discover/movie?&language=ru-RU&with_genres=${id}`).then(value => value.data)
 }
