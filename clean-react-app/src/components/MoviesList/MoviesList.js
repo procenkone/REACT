@@ -30,9 +30,14 @@ const MoviesList = ({
     // vote_average: 8.4
     // vote_count: 7103
     const year = release_date.toString().slice(0, 4)
-    console.log(backdrop_path)
+
+    function truncate(str, maxlength) {
+        return (str.length > maxlength) ? str.slice(0, maxlength - 1) + '…' : str;
+    }
+
+    // console.log(backdrop_path)
     return (
-        <div className={css.movieItem} >
+        <div className={css.movieItem}>
             <NavLink to={`/movie/${id}`} state={backdrop_path}>
                 <div>
                     <div className={css.titleBlock}>
@@ -43,11 +48,13 @@ const MoviesList = ({
             </NavLink>
 
             <div className={css.overview}>
-                    {overview}
-                    <br/>
-                    <br/>
+                {truncate(overview, 550)}
+                <br/>
+                <br/>
+                <div className={css.dateReleas} >
                     <p>Дата релиза: {release_date} </p>
                 </div>
+            </div>
         </div>
     );
 };

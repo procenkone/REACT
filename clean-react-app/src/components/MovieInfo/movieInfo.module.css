@@ -1,6 +1,6 @@
 .movieInfoWrap{
     display: flex;
-    width: 70%;
+    width: 974px;
     padding-top: 30px;
     margin: 0 auto;
     align-items: center;
@@ -13,6 +13,9 @@
     border: 1px solid #848480;
     border-radius: 10px;
     background: #585858 url(https://kinogo.zone/templates/tmp/images/bg.png) repeat-y;
+}
+.allContent{
+    margin-left: 90px;
 }
 .titleBlock{
     text-align: center;
@@ -67,19 +70,19 @@ display: flex;
     font-size: 13px;
 }
 
-.video video{
-    margin-left: 312px;
+.video {
+    margin-left: 287px;
     width: 485px;
     height: 273px;
-    border-radius: 30px;
-    margin-top: 30px;
+    margin-top: 65px;
+    margin-bottom: 65px;
 }
 
 .commentsTitle{
     display: flex;
-    margin-top: 30px;
     align-items: center;
     gap:15px;
+    padding-top: 7px;
 }
 .commentsWrap{
     margin-left: 270px;
@@ -105,4 +108,6 @@ display: flex;
     font-family: Tahoma, verdana, sans-serif;
     color: #a8a89c;
     font-size: 14px;
+    border-bottom: 1px solid #3f413f;
+
 }

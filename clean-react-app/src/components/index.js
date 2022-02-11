@@ -7,4 +7,5 @@ export * from './PosterPreview/PosterPreview';
 export * from './StarsRating/StarsRating';
 export * from './GenreBadge/GenreBadge';
 export * from './Footer/Footer';
-export * from './TopMovie/TopMovie'
+export * from './TopMovie/TopMovie';
+export * from './Upcoming/Upcoming';

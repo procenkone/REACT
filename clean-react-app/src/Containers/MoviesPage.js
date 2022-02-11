@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
-import {MoviesList} from "../components";
+import {GenreBadge, MoviesList} from "../components";
 import {useDispatch, useSelector} from "react-redux";
 import {getAllMovie, getPopular, pagination} from "../store";
 import css from './moviePage.module.css'
+import Upcoming from "../components/Upcoming/Upcoming";
 
 const MoviesPage = () => {
     const dispatch = useDispatch();
@@ -20,6 +21,9 @@ const MoviesPage = () => {
 
     return (
         <div>
+            <GenreBadge/>
+            <Upcoming/>
+
             <div className={css.moviePageWrap}>
                 {status === 'pending' && <h1>Loading...</h1>}
                 {error && <h1>{error}</h1>}

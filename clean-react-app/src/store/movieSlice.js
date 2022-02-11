@@ -14,6 +14,7 @@ export const getAllMovie = createAsyncThunk(
 
     }
 )
+
 export const getPopular = createAsyncThunk(
     'movieSlice/getPopular',
     async (_, {rejectWithValue}) => {
@@ -26,6 +27,7 @@ export const getPopular = createAsyncThunk(
 
     }
 )
+
 export const pagination = createAsyncThunk(
     'movieSlice/pagination',
     async (page, {dispatch}) => {
@@ -38,8 +40,9 @@ export const pagination = createAsyncThunk(
         }
     }
 )
+
 export const getMovieInfo = createAsyncThunk(
-    'movieSlice/pagination',
+    'movieSlice/getMovieInfo',
     async (id, {dispatch}) => {
         try {
             const movieDetails = await movieServices.movieInfo(id)
@@ -51,13 +54,61 @@ export const getMovieInfo = createAsyncThunk(
 )
 
 export const getMovieComments = createAsyncThunk(
-    'movieSlice/pagination',
+    'movieSlice/getMovieComments',
     async (id, {dispatch}) => {
         try {
             const movieComments = await movieServices.reviewsById(id)
             dispatch(movieCommentsDispatch(movieComments))
         } catch (e) {
             console.log(e.message)
+        }
+    }
+)
+
+export const getMovieVideo = createAsyncThunk(
+    'movieSlice/getMovieVideo',
+    async (id, {dispatch}) => {
+        try {
+            const movieVideo = await movieServices.getVideo(id)
+            dispatch(movieVideoDispatch(movieVideo))
+        } catch (e) {
+            console.log(e.message)
+        }
+    }
+)
+
+export const getUpcoming = createAsyncThunk(
+    'movieSlice/getUpcoming',
+    async (_,{dispatch})=>{
+        try {
+            const upcoming = await movieServices.getUpcoming()
+            dispatch(movieUpcomingDispatch(upcoming))
+        }catch (e) {
+            console.log(e)
+        }
+    }
+)
+
+export const getMovieActor = createAsyncThunk(
+    'movieSlice/getMovieActor',
+    async (id, {dispatch}) => {
+        try {
+            const movieActor = await movieServices.getActor(id)
+            dispatch(movieActorDispatch(movieActor))
+        } catch (e) {
+            console.log(e.message)
+        }
+    }
+)
+
+export const getGenres = createAsyncThunk(
+    'movieSlice/getGenres',
+    async (_,{dispatch})=>{
+        try {
+            const genres = await movieServices.genreList()
+            dispatch(movieGenresDispatch(genres))
+        }catch (e) {
+            console.log(e)
         }
     }
 )
@@ -71,6 +122,14 @@ const movieSlice = createSlice({
         error: null,
         movieInfo: null,
         comments: [],
+        videos:null,
+        statusInfo:true,
+        upcoming:[],
+        statusUpcoming:true,
+        actor:[],
+        statusActor:true,
+        genres:[],
+        statusGenres:true,
 
 
         popular: [],
@@ -83,11 +142,32 @@ const movieSlice = createSlice({
             state.movies = action.payload
         },
         movieInfoDispatch: (state, action) => {
+            state.statusInfo = true
             state.movieInfo = action.payload
+            state.statusInfo = false
         },
         movieCommentsDispatch:(state,action)=>{
             state.comments = action.payload
+        },
+        movieVideoDispatch:(state,action)=>{
+            state.videos = action.payload
+        },
+        movieUpcomingDispatch:(state,action)=>{
+            state.statusUpcoming = true
+            state.upcoming = action.payload
+            state.statusUpcoming = false
+        },
+        movieActorDispatch:(state,action)=>{
+            state.statusActor = true
+            state.actor = action.payload
+            state.statusActor = false
+        },
+        movieGenresDispatch:(state,action)=>{
+            state.statusGenres = true
+            state.genres = action.payload
+            state.statusGenres = false
         }
+
     },
     extraReducers: {
         [getAllMovie.pending]: (state, action) => {
@@ -119,6 +199,6 @@ const movieSlice = createSlice({
 })
 
 const movieReducer = movieSlice.reducer
-export const {reloadPage, movieInfoDispatch, movieCommentsDispatch} = movieSlice.actions
+export const {reloadPage, movieInfoDispatch, movieCommentsDispatch, movieVideoDispatch, movieUpcomingDispatch, movieActorDispatch, movieGenresDispatch} = movieSlice.actions
 
 export {movieReducer}

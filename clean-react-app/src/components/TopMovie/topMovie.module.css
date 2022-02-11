@@ -8,3 +8,7 @@
     cursor: pointer;
     border: 3px solid #888;
 }
+.movieItem img:hover{
+    height: 180px;
+    box-shadow: 10px 5px 5px #3f3f3f;
+}

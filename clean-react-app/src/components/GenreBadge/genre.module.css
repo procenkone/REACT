@@ -1,0 +1,37 @@
+.genreWrap{
+    display: flex;
+    flex-direction: column;
+    width: 136px;
+    height: 382px;
+    position: absolute;
+    left: 290px;
+    top: 527px;
+}
+.titleBlock{
+    font-size: 15px;
+    font-weight: 700;
+    font-style: normal;
+    color: #f3f3f3;
+    text-shadow: 1px 1px #000;
+    font-family: Tahoma, verdana, sans-serif;
+    padding-bottom: 15px;
+}
+
+
+
+.links{
+    display: flex;
+    flex-direction: column;
+    line-height: 17px;
+}
+.links a{
+    color: #e0dfdc;
+    text-decoration: underline;
+    list-style-type: none;
+    font-family: Tahoma, verdana, sans-serif;
+    font-size: 13px;
+}
+
+.links a[class='active']{
+    color: red;
+}
