@@ -5,6 +5,9 @@ import {useLocation, useParams} from "react-router-dom";
 import {getMovieActor, getMovieComments, getMovieInfo, getMovieVideo} from "../../store";
 import css from './movieInfo.module.css'
 import {axiosServices, movieServices} from "../../services";
+import {GenreNav} from "../GenreNav/GenreNav";
+import Upcoming from "../Upcoming/Upcoming";
+import {logDOM} from "@testing-library/react";
 
 const MovieInfo = () => {
     const dispatch = useDispatch()
@@ -20,7 +23,6 @@ const MovieInfo = () => {
         statusActor
     } = useSelector(state => state['movieReducer'])
     const actors = actor.cast && actor.cast.filter(item => item.popularity > 10)
-    console.log( actors)
 
     const posterPath = 'https://image.tmdb.org/t/p/w500'
     const defUrl = 'https://secure.gravatar.com/avatar/992eef352126a53d7e141bf9e8707576.jpg'
@@ -34,8 +36,8 @@ const MovieInfo = () => {
         dispatch(getMovieActor(id))
     }, [id])
 
+    const video = (videos && videos.results.length) ? videos.results[0].key : ''
 
-    const video = videos && videos.results[0].key
 
     function truncate(str, maxlength) {
         return (str.length > maxlength) ? str.slice(0, maxlength - 1) + '…' : str;
@@ -43,6 +45,9 @@ const MovieInfo = () => {
 
     return (
         <div className={css.movieInfoWrap}>
+            <div className={css.navigate}><span>Навигация</span></div>
+            <GenreNav/>
+            <Upcoming/>
             {statusInfo && <h1>Loading...</h1>}
             {
                 movieInfo &&
@@ -76,12 +81,14 @@ const MovieInfo = () => {
                         </ul>
                     </div>
                     <div className={css.video}>
-                        {videos &&
+                        {videos && video ?
                             <iframe width="560" height="315"
                                     src={`https://www.youtube.com/embed/${video}?append_to_response=videos`}
                                     title="YouTube video player" frameBorder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowFullScreen></iframe>
+                                    allowFullScreen>
+                            </iframe>
+                            : ''
                         }
                     </div>
 
@@ -92,7 +99,8 @@ const MovieInfo = () => {
                                     <img
                                         src={comment.author_details.avatar_path === null ? defUrl : comment.author_details.avatar_path.includes(base) ?
                                             comment.author_details.avatar_path.replace(/^./, "") : base + comment.author_details.avatar_path}
-                                        alt={comment.id}/>
+                                        alt={comment.id}
+                                    />
                                     <span> {comment.author}</span>
                                 </div>
                                 <div className={css.content}>{truncate(comment.content, 200)}</div>

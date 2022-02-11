@@ -22,7 +22,7 @@ const GenreNav = () => {
                 <div className={css.navLinkBlock}>
                     {genres && genres.map(genre =>
                         <NavLink key={genre.id}
-                                 to={`genreList/${genre.id}`}>{genre.name[0].toUpperCase() + genre.name.slice(1)}</NavLink>
+                                 to={`/genreList/${genre.id}`}>{genre.name[0].toUpperCase() + genre.name.slice(1)}</NavLink>
                     )}
                 </div>
             </div>

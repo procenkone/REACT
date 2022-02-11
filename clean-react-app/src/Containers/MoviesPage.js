@@ -8,7 +8,7 @@ import Upcoming from "../components/Upcoming/Upcoming";
 const MoviesPage = () => {
     const dispatch = useDispatch();
 
-    const {movies: {results, page, total_pages}, popular, error, status, genreList} = useSelector(state => state['movieReducer']);
+    const {movies: {results, page, total_pages}, popular, error, status} = useSelector(state => state['movieReducer']);
 
 
     useEffect(() => {

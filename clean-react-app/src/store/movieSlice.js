@@ -40,6 +40,20 @@ export const pagination = createAsyncThunk(
         }
     }
 )
+export const paginationGenre = createAsyncThunk(
+    'movieSlice/pagination',
+    async (id,page, {dispatch}) => {
+        try {
+            const newPageGenres = await movieServices.paginationGenre(id,page)
+            console.log(page)
+            dispatch(reloadPageGenre(newPageGenres))
+        } catch (e) {
+            console.log(e.message)
+        }
+    }
+)
+
+
 
 export const getMovieInfo = createAsyncThunk(
     'movieSlice/getMovieInfo',
@@ -155,6 +169,10 @@ const movieSlice = createSlice({
             console.log(action.payload)
             state.movies = action.payload
         },
+        reloadPageGenre:(state, action) => {
+            console.log(action.payload)
+            state.genreList = action.payload
+        },
         movieInfoDispatch: (state, action) => {
             state.statusInfo = true
             state.movieInfo = action.payload
@@ -219,6 +237,6 @@ const movieSlice = createSlice({
 })
 
 const movieReducer = movieSlice.reducer
-export const {movieGenreDispatch,reloadPage, movieInfoDispatch, movieCommentsDispatch, movieVideoDispatch, movieUpcomingDispatch, movieActorDispatch, movieGenresDispatch} = movieSlice.actions
+export const {movieGenreDispatch,reloadPage,reloadPageGenre, movieInfoDispatch, movieCommentsDispatch, movieVideoDispatch, movieUpcomingDispatch, movieActorDispatch, movieGenresDispatch} = movieSlice.actions
 
 export {movieReducer}

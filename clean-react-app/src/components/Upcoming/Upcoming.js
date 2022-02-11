@@ -29,11 +29,11 @@ const Upcoming = () => {
 
             {results && results.map(movie =>
                 <div key={movie.id} className={css.movieItem}>
-                    <NavLink to={`movie/${movie.id}`}>
+                    <NavLink to={`/movie/${movie.id}`}>
                         <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title}/>
                     </NavLink>
                     <div className={css.movieInfo}>
-                        <NavLink to={`movie/${movie.id}`}>{movie.title}</NavLink>
+                        <NavLink to={`/movie/${movie.id}`}>{movie.title}</NavLink>
                         <div className={css.overviewBlock}>
                             <div className={css.overview}>
                                 <p>{truncate(movie.overview, 90)}</p>

@@ -1,27 +1,45 @@
 import React, {useEffect} from 'react';
-import {getGenreList} from "../../store";
+import {getGenreList, pagination, paginationGenre} from "../../store";
 import {useDispatch, useSelector} from "react-redux";
+import {useParams} from "react-router-dom";
+import css from './generesPage.module.css'
+import {GenreNav} from "../GenreNav/GenreNav";
+import Upcoming from "../Upcoming/Upcoming";
+import {MoviesList} from "../MoviesList/MoviesList";
 
 const GenresPage = () => {
     const dispatch = useDispatch();
 
+const {genreId}= useParams()
+
     const {
-        movies: {results, page, total_pages},
-        popular,
-        error,
-        status,
-        genreList
+        genreList: {results, page, total_pages},
+        statusByGenreList
     } = useSelector(state => state['movieReducer']);
 
     useEffect(() => {
-        dispatch(getGenreList(28))
-    }, [])
+        dispatch(getGenreList(genreId))
+    }, [genreId])
 
-    console.log(genreList && genreList)
+    console.log(results && results)
 
     return (
         <div>
+            <div className={css.navigate}><span>Навигация</span></div>
+            <GenreNav/>
+            <Upcoming/>
 
+            <div className={css.moviePageWrap}>
+                {statusByGenreList && <h1>Loading...</h1>}
+                {results && results.map(movie => <MoviesList key={movie.id} movie={movie}/>)}
+            </div>
+
+            <div className={css.buttonBlock}>
+                <button onClick={() => page > 1 && dispatch(paginationGenre(genreId, page - 1))}>previous
+                </button>
+                {page}
+                <button onClick={() => page < total_pages && dispatch(paginationGenre(genreId, page + 1))}>next</button>
+            </div>
         </div>
     );
 };
