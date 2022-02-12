@@ -30,9 +30,7 @@
     padding: 6px 20px 22px;
 }
 .navPanel a:hover{
-    transition: all 0.5s ease-out;
-font-size: 14px;
-    box-shadow: 5px 4px 4px #3f413f;
+  background: #242424;
 }
 .navPanel a span{
     list-style-type: none;

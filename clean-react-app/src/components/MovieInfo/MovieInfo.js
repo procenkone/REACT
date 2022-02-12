@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {useLocation, useParams} from "react-router-dom";
+import {NavLink, useLocation, useParams} from "react-router-dom";
 
 import {getMovieActor, getMovieComments, getMovieInfo, getMovieVideo} from "../../store";
 import css from './movieInfo.module.css'
@@ -43,6 +43,7 @@ const MovieInfo = () => {
         return (str.length > maxlength) ? str.slice(0, maxlength - 1) + '…' : str;
     }
 
+
     return (
         <div className={css.movieInfoWrap}>
             <div className={css.navigate}><span>Навигация</span></div>
@@ -72,7 +73,7 @@ const MovieInfo = () => {
                                 key={item.name}>{item.name}</span>)}</span>
                             </li>
                             <li>Жанр: <span>{movieInfo && movieInfo.genres.map((item, i) => <span
-                                key={i}>{item.name}, </span>)}</span></li>
+                                key={i}><NavLink to={`/genreList/${item.id}`}>{item.name}</NavLink>, </span>)}</span></li>
                             <li>Продолжительность: <span>{movieInfo.runtime} мин.</span></li>
                             <li>Мировая премьера: <span>{movieInfo.release_date}</span></li>
                             <li>Актеры: {actors && actors.map(actor => <span
@@ -82,13 +83,13 @@ const MovieInfo = () => {
                     </div>
                     <div className={css.video}>
                         {videos && video ?
-                            <iframe width="560" height="315"
+                            <iframe width="639" height="350"
                                     src={`https://www.youtube.com/embed/${video}?append_to_response=videos`}
                                     title="YouTube video player" frameBorder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowFullScreen>
                             </iframe>
-                            : ''
+                            : <div className={css.error}><h1>Упс... К сожалению ето видео больше недоступно</h1></div>
                         }
                     </div>
 

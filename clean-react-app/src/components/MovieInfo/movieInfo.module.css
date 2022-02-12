@@ -17,6 +17,11 @@
 .allContent{
     margin-left: 90px;
 }
+.error{
+    color: #A7ACAF;
+    padding-top: 100px;
+    padding-left: 50px;
+}
 .navigate{
     position: absolute;
     left: 273px;
@@ -86,9 +91,18 @@ display: flex;
     /*margin-top: 5px;*/
     font-size: 13px;
 }
+.lastInfo ul a{
+    font-size: 14px;
+    color: #e0dfdc;
+    text-decoration: underline;
+
+}
+.lastInfo ul a:hover{
+    color: red;
+}
 
 .video {
-    margin-left: 287px;
+    margin-left: 242px;
     width: 485px;
     height: 273px;
     margin-top: 65px;

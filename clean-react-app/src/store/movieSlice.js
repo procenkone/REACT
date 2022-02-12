@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {movieServices} from "../services";
+import axios from "axios";
 
 
 export const getAllMovie = createAsyncThunk(
@@ -42,10 +43,9 @@ export const pagination = createAsyncThunk(
 )
 export const paginationGenre = createAsyncThunk(
     'movieSlice/pagination',
-    async (id,page, {dispatch}) => {
+    async ({genreId, page}, {dispatch}) => {
         try {
-            const newPageGenres = await movieServices.paginationGenre(id,page)
-            console.log(page)
+            const newPageGenres = await movieServices.paginationGenre(genreId,page)
             dispatch(reloadPageGenre(newPageGenres))
         } catch (e) {
             console.log(e.message)
@@ -166,11 +166,9 @@ const movieSlice = createSlice({
     },
     reducers: {
         reloadPage: (state, action) => {
-            console.log(action.payload)
             state.movies = action.payload
         },
         reloadPageGenre:(state, action) => {
-            console.log(action.payload)
             state.genreList = action.payload
         },
         movieInfoDispatch: (state, action) => {
@@ -200,6 +198,7 @@ const movieSlice = createSlice({
             state.statusGenres = false
         },
         movieGenreDispatch:(state,action)=>{
+
             state.statusByGenreList = true
             state.genreList = action.payload
             state.statusByGenreList = false
