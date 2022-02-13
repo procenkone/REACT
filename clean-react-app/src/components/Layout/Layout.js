@@ -6,7 +6,6 @@ import {Footer, GenreNav, Header} from "../index";
 import Carousel from "../Carousel/Carousel";
 import Upcoming from "../Upcoming/Upcoming";
 
-
 const Layout = () => {
     return (
         <div className={css.wrapLayout}>

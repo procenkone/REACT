@@ -15,3 +15,4 @@ export * from './OrderdescPage/OrderdescPage';
 export * from './SearchPage/SearchPage';
 export * from './LatestPage/LatestPage'
 export * from './StarsRating/StarsRating'
+export * from './Layout/Layout'
