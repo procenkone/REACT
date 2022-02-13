@@ -10,6 +10,10 @@ export const movieServices = {
     getUpcoming: () => axiosServices(`/movie/upcoming?language=ru-RU`).then(value => value.data),
     getActor: (id) => axiosServices(`/movie/${id}/credits?language=ru-RU`).then(value => value.data),
     genreList: () => axiosServices(`/genre/movie/list?language=ru-RU`).then(value => value.data),
-    getGenre:(id)=>axiosServices(`/discover/movie?&language=ru-RU&with_genres=${id}`).then(value => value.data),
-    paginationGenre:(genreId,page)=>axiosServices.get(`/discover/movie?language=ru-RU&with_genres=${genreId}&page=${page}`).then(value => value.data)
+    getGenre: (id) => axiosServices(`/discover/movie?&language=ru-RU&with_genres=${id}`).then(value => value.data),
+    paginationGenre: (genreId, page) => axiosServices.get(`/discover/movie?language=ru-RU&with_genres=${genreId}&page=${page}`).then(value => value.data),
+    search: (keyword) => axiosServices.get(`/search/movie?language=ru-RU&query=${keyword}`).then(value => value.data),
+    latest: () => axiosServices.get('/movie/latest?language=ru-RU').then(value => value.data),
+    tv:() => axiosServices.get('/discover/tv?language=ru-RU').then(value => value.data),
+    tVpagination:(page) => axiosServices.get(`/discover/tv?language=ru-RU&page=${page}`).then(value => value.data)
 }

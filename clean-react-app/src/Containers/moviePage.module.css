@@ -1,6 +1,7 @@
 .moviePageWrap {
     display: flex;
     max-width: 974px;
+    min-height: 1100px;
     width: 70%;
     padding-top: 30px;
     margin: 0 auto;

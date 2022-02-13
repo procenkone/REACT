@@ -20,9 +20,9 @@ const Carousel = () => {
                 <div className={css.carouselWrap}>
                     <div className={css.navPanel}>
                         <NavLink to={'/'}><span>ГЛАВНАЯ</span></NavLink>
-                        <NavLink to={'/'}><span>НОВИНКИ</span></NavLink>
-                        <NavLink to={'/'}><span>СЕРИАЛЫ</span></NavLink>
-                        <NavLink to={'/'}><span>СТОЛ ЗАКАЗОВ</span></NavLink>
+                        <NavLink to={'/latest'}><span>НОВИНКИ</span></NavLink>
+                        <NavLink to={'/tv'}><span>СЕРИАЛЫ</span></NavLink>
+                        <NavLink to={'/orderdesc'}><span>СТОЛ ЗАКАЗОВ</span></NavLink>
                     </div>
                     <div className={css.horizontal}>
                         {popular.results && popular.results.map(movieTop => <TopMovie key={movieTop.id}

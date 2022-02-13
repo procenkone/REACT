@@ -10,3 +10,8 @@ export * from './Footer/Footer';
 export * from './TopMovie/TopMovie';
 export * from './Upcoming/Upcoming';
 export * from './GenresPage/GenresPage';
+export * from './SearchPage/SearchPage';
+export  * from './HomePage/HomePage';
+export * from './TvPage/TvPage';
+export * from './LatestPage/LatestPage';
+export * from './OrderdescPage/OrderdescPage'

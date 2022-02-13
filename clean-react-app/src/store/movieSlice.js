@@ -55,6 +55,7 @@ export const paginationGenre = createAsyncThunk(
 
 
 
+
 export const getMovieInfo = createAsyncThunk(
     'movieSlice/getMovieInfo',
     async (id, {dispatch}) => {
@@ -139,6 +140,54 @@ export const getGenreList = createAsyncThunk(
     }
 )
 
+export  const searchMovie = createAsyncThunk(
+    'movieSlice/searchMovie',
+    async (keyword,{dispatch})=>{
+        try {
+            const searchResult = await movieServices.search(keyword)
+            dispatch(searchResultDispatch(searchResult))
+        }catch (e) {
+            console.log(e.message)
+        }
+    }
+)
+
+export  const latestMovie = createAsyncThunk(
+    'movieSlice/latestMovie',
+    async (_,{dispatch})=>{
+        try {
+            const latest = await movieServices.latest()
+            dispatch(latestResultDispatch(latest))
+        }catch (e) {
+            console.log(e.message)
+        }
+    }
+)
+
+export  const tvList = createAsyncThunk(
+    'movieSlice/tv',
+    async (_,{dispatch})=>{
+        try {
+            const tv = await movieServices.tv()
+            dispatch(tvResultDispatch(tv))
+        }catch (e) {
+            console.log(e.message)
+        }
+    }
+)
+export const tVpagination = createAsyncThunk(
+    'movieSlice/tVpagination',
+    async (page, {dispatch}) => {
+        console.log(page)
+        try {
+            const newTvPage = await movieServices.tVpagination(page)
+            dispatch(tVpaginationDispatch(newTvPage))
+        } catch (e) {
+            console.log(e.message)
+        }
+    }
+)
+
 
 const movieSlice = createSlice({
     name: 'movieSlice',
@@ -158,6 +207,14 @@ const movieSlice = createSlice({
         statusGenres:true,
         genreList:[],
         statusByGenreList:true,
+        searchResults:[],
+        statusSearchResults:true,
+        latest:[],
+        statusLatest:true,
+        tv:[],
+        statusTv:true,
+
+
 
 
         popular: [],
@@ -170,6 +227,11 @@ const movieSlice = createSlice({
         },
         reloadPageGenre:(state, action) => {
             state.genreList = action.payload
+        },
+        tVpaginationDispatch:(state, action) => {
+            console.log(action.payload)
+
+            state.tv = action.payload
         },
         movieInfoDispatch: (state, action) => {
             state.statusInfo = true
@@ -198,12 +260,26 @@ const movieSlice = createSlice({
             state.statusGenres = false
         },
         movieGenreDispatch:(state,action)=>{
-
             state.statusByGenreList = true
             state.genreList = action.payload
             state.statusByGenreList = false
-
+        },
+        searchResultDispatch:(state,action)=>{
+            state.statusSearchResults = true
+            state.searchResults = action.payload
+            state.statusSearchResults = false
+        },
+        latestResultDispatch:(state,action)=>{
+            state.statusLatest = true
+            state.latest = action.payload
+            state.statusLatest = false
+        },
+        tvResultDispatch:(state,action)=>{
+            state.statusTv = true
+            state.tv = action.payload
+            state.statusTv = false
         }
+
 
     },
     extraReducers: {
@@ -236,6 +312,6 @@ const movieSlice = createSlice({
 })
 
 const movieReducer = movieSlice.reducer
-export const {movieGenreDispatch,reloadPage,reloadPageGenre, movieInfoDispatch, movieCommentsDispatch, movieVideoDispatch, movieUpcomingDispatch, movieActorDispatch, movieGenresDispatch} = movieSlice.actions
+export const {tVpaginationDispatch,tvResultDispatch,latestResultDispatch,searchResultDispatch, movieGenreDispatch,reloadPage,reloadPageGenre, movieInfoDispatch, movieCommentsDispatch, movieVideoDispatch, movieUpcomingDispatch, movieActorDispatch, movieGenresDispatch} = movieSlice.actions
 
 export {movieReducer}
