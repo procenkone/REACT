@@ -1,7 +1,8 @@
 import axios from "axios";
+
 const axiosServices = axios.create({
-    baseURL:'https://api.themoviedb.org/3',
-    headers:{
+    baseURL: 'https://api.themoviedb.org/3',
+    headers: {
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.' +
             'eyJhdWQiOiJjM2NiMjkzZDJlZjRiMzdmM2JiOWRmOD' +
             'U5Y2JlZjk1MSIsInN1YiI6IjYxZmU1YWFhNGI2ZDlkMDAxOWFl' +

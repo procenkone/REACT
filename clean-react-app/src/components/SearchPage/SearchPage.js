@@ -1,26 +1,20 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {useSelector} from "react-redux";
-import css from "../../Containers/moviePage.module.css";
+
 import {MoviesList} from "../MoviesList/MoviesList";
-import {GenreNav} from "../GenreNav/GenreNav";
-import Upcoming from "../Upcoming/Upcoming";
 
 const SearchPage = () => {
-    const {searchResults, statusSearchResults} = useSelector(state => state['movieReducer'])
-    console.log(searchResults)
-
+    const {searchResults, statusSearchResults} = useSelector(state => state['movieReducer']);
 
     return (
-        <div >
-            <GenreNav/>
-            <Upcoming/>
-            <div className={css.moviePageWrap}>
+        <div>
+            <div>
                 {statusSearchResults && <h1>Load...</h1>}
-                {searchResults.results && searchResults.results.map(movie => <MoviesList key={movie.id} movie={movie}/>)}
-
+                {searchResults.results && searchResults.results.map(movie => <MoviesList key={movie.id}
+                                                                                         movie={movie}/>)}
             </div>
         </div>
     );
 };
 
-export default SearchPage;
+export {SearchPage};

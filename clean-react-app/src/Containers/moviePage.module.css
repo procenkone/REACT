@@ -1,4 +1,5 @@
 .moviePageWrap {
+    position: relative;
     display: flex;
     max-width: 974px;
     min-height: 1100px;
@@ -17,33 +18,15 @@
     background: #585858 url(https://kinogo.zone/templates/tmp/images/bg.png) repeat-y;
 }
 
-.navigate{
-    position: absolute;
-    left: 273px;
-    top: 490px;
-    font-size: 16px;
-    font-weight: 700;
-    font-style: normal;
-    color: #f3f3f3;
-    text-shadow: 1px 1px #000;
-    font-family: Tahoma, verdana, sans-serif;
-    border-bottom: 1px solid #848480;
-    width: 330px;
-    padding-bottom: 7px;
-}
-.navigate span{
-    padding-left: 15px;
-}
-
 .buttonBlock {
-    margin-top: 20px;
+    margin-top: 31px;
     display: flex;
     justify-content: center;
     gap: 30px;
     color: #7e7d7d;
+    margin-left: 304px;
     font-size: 25px;
-
-
+    padding-bottom: 25px;
 }
 
 .buttonBlock button {

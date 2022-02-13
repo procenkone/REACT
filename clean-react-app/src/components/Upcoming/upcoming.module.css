@@ -1,21 +1,18 @@
 .upcomingWrap {
     width: 329px;
-    top: 910px;
+    top: 450px;
     position: absolute;
-    left: 274px;
     border-top: 1px solid #848480;
     list-style-type: none;
     font-family: Tahoma, verdana, sans-serif;
     color: #a8a8a8;
     height: 311px;
     overflow: hidden;
-
 }
 
 .movieItem {
     padding: 8px;
     display: flex;
-
 }
 
 .titleBlock {
@@ -40,8 +37,6 @@
     height: 120px;
 }
 
-
-
 .movieInfo {
     display: flex;
     flex-direction: column;
@@ -60,7 +55,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
 }
 
 .movieInfo a {
@@ -74,7 +68,6 @@
 
 .movieInfo a:hover {
     color: red;
-
 }
 
 .year {

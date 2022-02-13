@@ -1,54 +1,46 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {NavLink, useLocation, useParams} from "react-router-dom";
 
+import css from './movieInfo.module.css';
 import {getMovieActor, getMovieComments, getMovieInfo, getMovieVideo} from "../../store";
-import css from './movieInfo.module.css'
-import {axiosServices, movieServices} from "../../services";
-import {GenreNav} from "../GenreNav/GenreNav";
-import Upcoming from "../Upcoming/Upcoming";
-import {logDOM} from "@testing-library/react";
+import {StarsRating} from "../StarsRating/StarsRating";
 
 const MovieInfo = () => {
-    const dispatch = useDispatch()
-    const {state: poster} = useLocation()
-    const {id} = useParams()
+    const dispatch = useDispatch();
+    const {id} = useParams();
+
     const {
         movieInfo,
         videos,
         statusInfo,
-        error,
         comments: {results: comments},
         actor,
-        statusActor
-    } = useSelector(state => state['movieReducer'])
-    const actors = actor.cast && actor.cast.filter(item => item.popularity > 10)
+    } = useSelector(state => state['movieReducer']);
 
-    const posterPath = 'https://image.tmdb.org/t/p/w500'
-    const defUrl = 'https://secure.gravatar.com/avatar/992eef352126a53d7e141bf9e8707576.jpg'
-    const base = 'https://secure.gravatar.com/avatar/'
+    const actors = actor.cast && actor.cast.filter(item => item.popularity > 10);
 
+    const posterPath = 'https://image.tmdb.org/t/p/w500';
+    const defUrl = 'https://secure.gravatar.com/avatar/992eef352126a53d7e141bf9e8707576.jpg';
+    const base = 'https://secure.gravatar.com/avatar/';
 
     useEffect(() => {
-        dispatch(getMovieInfo(id))
-        dispatch(getMovieComments(id))
-        dispatch(getMovieVideo(id))
-        dispatch(getMovieActor(id))
-    }, [id])
+        dispatch(getMovieInfo(id));
+        dispatch(getMovieComments(id));
+        dispatch(getMovieVideo(id));
+        dispatch(getMovieActor(id));
+    }, [id]);
 
-    const video = (videos && videos.results.length) ? videos.results[0].key : ''
-
+    const video = (videos && videos.results.length) ? videos.results[0].key : '';
 
     function truncate(str, maxlength) {
         return (str.length > maxlength) ? str.slice(0, maxlength - 1) + '…' : str;
     }
 
+    const {state: vote_average} = useLocation();
 
     return (
         <div className={css.movieInfoWrap}>
-            <div className={css.navigate}><span>Навигация</span></div>
-            <GenreNav/>
-            <Upcoming/>
             {statusInfo && <h1>Loading...</h1>}
             {
                 movieInfo &&
@@ -73,14 +65,18 @@ const MovieInfo = () => {
                                 key={item.name}>{item.name}</span>)}</span>
                             </li>
                             <li>Жанр: <span>{movieInfo && movieInfo.genres.map((item, i) => <span
-                                key={i}><NavLink to={`/genreList/${item.id}`}>{item.name}</NavLink>, </span>)}</span></li>
+                                key={i}><NavLink to={`/genreList/${item.id}`}>{item.name}</NavLink>, </span>)}</span>
+                            </li>
                             <li>Продолжительность: <span>{movieInfo.runtime} мин.</span></li>
                             <li>Мировая премьера: <span>{movieInfo.release_date}</span></li>
                             <li>Актеры: {actors && actors.map(actor => <span
                                 key={actor.id}>{actor.name},</span>)}</li>
-
+                            {vote_average && <div style={{display: 'flex', gap: '10px'}}>Рейтинг: <StarsRating
+                                ratingDB={vote_average / 2}/>
+                                <h4>{vote_average}</h4></div>}
                         </ul>
                     </div>
+
                     <div className={css.video}>
                         {videos && video ?
                             <iframe width="639" height="350"
@@ -108,7 +104,6 @@ const MovieInfo = () => {
                             </div>)}
                     </div>
                 </div>
-
             }
         </div>
     );

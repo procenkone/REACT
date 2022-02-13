@@ -1,8 +1,10 @@
 import React from 'react';
 import {Outlet} from "react-router-dom";
-import {Footer, Header} from "../index";
-import css from './layout.module.css'
+
+import css from './layout.module.css';
+import {Footer, GenreNav, Header} from "../index";
 import Carousel from "../Carousel/Carousel";
+import Upcoming from "../Upcoming/Upcoming";
 
 
 const Layout = () => {
@@ -10,12 +12,12 @@ const Layout = () => {
         <div className={css.wrapLayout}>
             <Header/>
             <Carousel/>
-            <div>
+            <div className={css.moviePageWrap}>
+                <div className={css.navigate}><span>Навигация</span></div>
+                <GenreNav/>
+                <Upcoming/>
                 <Outlet/>
             </div>
-            {/*<main>*/}
-            {/*    {children}*/}
-            {/*</main>*/}
             <Footer/>
         </div>
     );

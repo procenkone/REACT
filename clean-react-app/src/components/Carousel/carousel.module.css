@@ -4,13 +4,14 @@
     width: 974px;
     margin: 0 auto;
     padding-top: 188px;
-
 }
-.navPanel{
+
+.navPanel {
     display: flex;
     justify-content: right;
 }
-.navPanel a{
+
+.navPanel a {
     font-family: Tahoma, verdana, sans-serif;
     list-style-type: none;
     display: block;
@@ -29,15 +30,18 @@
     text-shadow: 1px 1px #000;
     padding: 6px 20px 22px;
 }
-.navPanel a:hover{
-  background: #242424;
+
+.navPanel a:hover {
+    background: #242424;
 }
-.navPanel a span{
+
+.navPanel a span {
     list-style-type: none;
     font-family: Tahoma, verdana, sans-serif;
     color: #a8a8a8;
 }
-.navPanel a span:hover{
+
+.navPanel a span:hover {
     color: #b8b1b1;
 }
 

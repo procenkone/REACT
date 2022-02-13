@@ -2,9 +2,9 @@
     display: flex;
     width: 587px;
     gap: 25px;
-    margin-top: -15px;
-    margin-left: 326px;
-    height: 383px;
+    margin-top: 12px;
+    margin-left: 360px;
+    height: 387px;
     border-bottom: 1px solid #6B6B6B;
     overflow: hidden;
 }
@@ -13,15 +13,13 @@
     height: 300px;
 }
 
-
 .movieItem a {
     text-decoration: none;
     letter-spacing: 1px;
-
 }
+
 .movieItem h3:hover{
    color: red;
-
 }
 
 .movieItem h3 {
@@ -37,6 +35,17 @@
     margin-bottom: 15px;
     text-align: center;
 }
+.starBlock{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.starBlock h4{
+    color:  #a8a8a8;
+    font-size: 15px;
+    font-family: Tahoma, verdana, sans-serif;
+}
 
 .overview {
     display: flex;
@@ -46,6 +55,7 @@
     padding-top: 35px;
     font-family: Tahoma, verdana, sans-serif;
 }
+
 .dateReleas{
     padding-bottom: 44px;
 }

@@ -2,9 +2,7 @@ import './App.css';
 import {Routes, Route} from "react-router-dom";
 import {Layout} from "./components/Layout/Layout";
 import {MoviesPage} from "./Containers";
-import {GenresPage, MovieInfo, OrderdescPage, TvPage} from "./components";
-import SearchPage from "./components/SearchPage/SearchPage";
-import LatestPage from "./components/LatestPage/LatestPage";
+import {GenresPage, MovieInfo,SearchPage,LatestPage, OrderdescPage, TvPage} from "./components";
 
 
 function App() {

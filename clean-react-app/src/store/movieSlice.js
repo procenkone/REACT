@@ -55,7 +55,6 @@ export const paginationGenre = createAsyncThunk(
 
 
 
-
 export const getMovieInfo = createAsyncThunk(
     'movieSlice/getMovieInfo',
     async (id, {dispatch}) => {

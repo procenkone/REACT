@@ -1,31 +1,29 @@
 import React, {useEffect} from 'react';
-import {GenreNav, MoviesList} from "../components";
 import {useDispatch, useSelector} from "react-redux";
-import {getAllMovie, getGenreList, getPopular, pagination} from "../store";
-import css from './moviePage.module.css'
-import Upcoming from "../components/Upcoming/Upcoming";
-import HomePage from "../components/HomePage/HomePage";
+
+import css from './moviePage.module.css';
+import {getAllMovie, pagination} from "../store";
+import {MoviesList} from "../components";
+
 
 const MoviesPage = () => {
     const dispatch = useDispatch();
 
-    const {movies: {results, page, total_pages}, searchResults} = useSelector(state => state['movieReducer']);
+    const {
+        movies: {results, page, total_pages},
+        error,
+        status
+    } = useSelector(state => state['movieReducer']);
 
     useEffect(() => {
-        dispatch(getAllMovie())
-    }, [])
-
-    console.log(searchResults)
-
+        dispatch(getAllMovie());
+    }, []);
 
     return (
         <div>
-            <div className={css.navigate}><span>Навигация</span></div>
-            <GenreNav/>
-            <Upcoming/>
-
-            {  results && <HomePage/>  }
-
+            {status === 'pending' && <h1>Loading...</h1>}
+            {error && <h1>{error}</h1>}
+            {results && results.map(movie => <MoviesList key={movie.id} movie={movie}/>)}
 
             <div className={css.buttonBlock}>
                 <button onClick={() => page > 1 && dispatch(pagination(page - 1))}>previous

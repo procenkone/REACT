@@ -1,19 +1,19 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {getGenres} from "../../store";
 import {NavLink} from "react-router-dom";
+
 import css from './genre.module.css'
+import {getGenres} from "../../store";
 
 
 const GenreNav = () => {
-
     const dispatch = useDispatch();
-    const {genres: {genres}, statusGenres} = useSelector(state => state['movieReducer'])
+    const {genres: {genres}, statusGenres} = useSelector(state => state['movieReducer']);
+
     useEffect(() => {
         dispatch(getGenres())
-    }, [])
+    }, []);
 
-    // console.log(genres)
     return (
         <div className={css.genreWrap}>
             {statusGenres && <h1>Loading...</h1>}

@@ -7,11 +7,13 @@
     padding-top: 7px;
     background: black;
 }
+
 .logo img {
     width: 91px;
     height: 26px;
     cursor: pointer;
 }
+
 .headerWrap input{
     width: 173px;
     height: 22px;
@@ -25,6 +27,7 @@
     color: #B6B6B6;
     background-color: #505050;
 }
+
 .headerWrap button{
     text-decoration: none;
     color: silver;
